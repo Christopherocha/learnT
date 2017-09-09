@@ -21,6 +21,7 @@ import Main from "../components/Main";
 import Profile from "../components/Profile";
 import Home from "../components/Home";
 import Login from "../components/Login";
+import Signup from "../components/Signup";
 
 
 // Export the Routes
@@ -29,9 +30,12 @@ export default (
   // The high level component is the Router component
   <Router history={hashHistory}>
     <Route path="/" component={Main}>
-    	<Route path="profile" component={Profile}></Route>
-    	<Route path="home" component={Home}></Route>
-      <Route path="login" component={Login}></Route>
+    	<Route path="/profile" component={Profile}></Route>
+    	<Route path="/home" component={Home}></Route>
+      <Route path="/login" component={Login}></Route>
+      <Route path="/signup" component={Signup}></Route>
+
+      
     	<IndexRoute component={Login} />
     </Route>
   </Router>
