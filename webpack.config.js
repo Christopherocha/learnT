@@ -8,6 +8,10 @@ module.exports = {
       output: {
         filename: "public/bundle.js"
       },
+
+      resolveLoader: {
+        moduleExtensions: ['-loader']
+      },
     
       // This section desribes the transformations we will perform
       module: {
