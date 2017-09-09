@@ -24,7 +24,7 @@ export default (
     	<Route path="/profile" component={Profile}></Route>
     	<Route path="/home" component={Home}></Route>
       <Route path="/login" component={Login}></Route>
-    	<IndexRoute component={Search} />
+    	<IndexRoute component={Login} />
     </Route>
   </Router>
 
