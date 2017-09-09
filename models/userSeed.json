@@ -1,0 +1,24 @@
+{
+    "userName" : "JamminReno",
+    "firstName" : "Janet",
+    "lastName" : "Reno",
+    "email" : "JReno34@aol.com",
+    "password" : "testtest",
+    "userPhoto" : "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Janet_Reno-us-Portrait.jpg/220px-Janet_Reno-us-Portrait.jpg"
+},
+{
+    "userName" : "SrirachaPam",
+    "firstName" : "Pam",
+    "lastName" : "Wilson",
+    "email" : "PWils@aol.com",
+    "password" : "testtest",
+    "userPhoto" : "https://static.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg"
+},
+{
+    "userName" : "TinyRick",
+    "firstName" : "Tiny",
+    "lastName" : "Rick",
+    "email" : "TRix@aol.com",
+    "password" : "testtest",
+    "userPhoto" : "https://ih1.redbubble.net/image.96451938.1637/flat,800x800,070,f.jpg"
+}
