@@ -1,19 +1,9 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+// Include the Main React Dependencies
+import React from "react";
+import ReactDOM from "react-dom";
 
-import Main from './components/Main.js';
+// Grabs the Routes
+import routes from "./config/routes";
 
-class App extends React.Component{
-    render(){
-        return (
-            <div>
-                <Main/>
-            </div>
-        )
-    }
-}
-
-ReactDOM.render(
-    <App/>,
-    document.getElementById('app')
-)
+// Renders the contents according to the route page.
+ReactDOM.render(routes, document.getElementById("app"));
