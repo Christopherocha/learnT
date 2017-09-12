@@ -8,12 +8,15 @@ import React from "react";
 // the IndexRoute (catch-all route)
 //import router, {Route, Router, hashHistory, IndexRoute} from "react-router";
 
-import router from 'react-router';
+import { Router, Route, Switch, hashHistory, IndexRoute } from 'react-router'
 
-const Route = router.Route;
-const Router = router.Router;
-const hashHistory = router.hashHistory;
-const IndexRoute = router.IndexRoute;
+
+// import {router from 'react-router';
+
+// const Route = router.Route;
+// const Router = router.Router;
+// const hashHistory = router.hashHistory;
+// const IndexRoute = router.IndexRoute;
 
 
 // Reference the high-level components
