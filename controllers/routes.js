@@ -6,6 +6,7 @@ var Post = require("../models/Post.js");
 //get list of all the users... might not need this route
 router.get("/users", function(req, res) {
   User.find({})
+  .populate("posts")
   .exec(function(err, users){
     if(err) throw err;
     else{
@@ -19,7 +20,7 @@ router.get("/login", function(req, res) {
   User.findOne({
     name: req.body.name,
     password: req.body.password
-}).populate("post")
+}).populate("posts")
   .exec(function(err, user){
     if(err) throw err
     else{
@@ -54,6 +55,7 @@ router.get("/post/:id", function(req, res) {
 
 //create a user
 router.post("/signup", function(req, res) {
+  console.log(req);
   var newUser = new User(req.body);
   newUser.save(function(err, doc){
     if(err) throw err;

@@ -1,14 +1,23 @@
 import React from 'react';
 
-import {Link} from "react-router";
+import {Link} from "react-router"; 
+
+import helper from './utils/helpers';
 
 export default class Main extends React.Component{
     constructor(props){
       super(props);
     }
-    
-    componentDidMount() {
 
+    componentDidMount() {
+        helper.getUsers().then(function (response) {
+          console.log(response);
+        }.bind(this));
+
+        helper.getPosts().then(function (response) {
+          console.log(response);
+          console.log('yay!');
+        }.bind(this));
     }
 
     componentDidUpdate() {

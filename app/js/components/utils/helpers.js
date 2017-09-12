@@ -19,12 +19,13 @@ var helper = {
     return axios.get("/user/"+userid);
   },
 
-  savePost: function(userid) {
-    return axios.post("/post/"+userid, { title: title, body: body  });
+  savePost: function(userid, post) {
+    return axios.post("/post/"+userid, post);
   },
 
-  signup: function() {
-    return axios.post("/signup", { name: name, password: password, email:email  });
+  signup: function(user) {
+    return axios.post("/signup", user);
+    //{ name: name, password: password, email:email  }
   },
 
   updateUser: function(id){
