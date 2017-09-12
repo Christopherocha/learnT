@@ -32,19 +32,29 @@ export default class Signup extends React.Component {
         <div className="panel panel-default">
 
           <div className="panel-heading">
-            <h3 className="panel-title">Search</h3>
+            <h3 className="panel-title">Signup</h3>
           </div>
 
           <div className="panel-body">
             <form onSubmit={this.handleSubmit}>
               <div className="form-group">
 
+              <h5>Username</h5>
+                <input
+                   value={this.state.topic}
+                  type="text"
+                  className="form-control"
+                  id="username"
+                  onChange={this.handleChange}
+                  required
+                />
+
                 <h5>Email</h5>
                 <input
                    value={this.state.topic}
                   type="email"
                   className="form-control"
-                  id="topic"
+                  id="email"
                   onChange={this.handleChange}
                   required
                 />

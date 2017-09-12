@@ -32,7 +32,7 @@ export default class Login extends React.Component {
         <div className="panel panel-default">
 
           <div className="panel-heading">
-            <h3 className="panel-title">Search</h3>
+            <h3 className="panel-title">Login</h3>
           </div>
 
           <div className="panel-body">
@@ -44,7 +44,7 @@ export default class Login extends React.Component {
                    value={this.state.topic}
                   type="email"
                   className="form-control"
-                  id="topic"
+                  id="email"
                   onChange={this.handleChange}
                   required
                 />
