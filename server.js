@@ -26,18 +26,21 @@ var routes = require("./controllers/routes.js")
 app.use("/", routes);
 
 
-// configure with mongoose
-mongoose.connect("mongodb://heroku_v2bd8wm8:6cio4u2cgakbm9gehu0ddng0sa@ds159493.mlab.com:59493/heroku_v2bd8wm8")
-//mongoose.connect("mongodb://localhost/hw14");
-var db = mongoose.connection;
-
-db.on("error", function(error) {
-  console.log("Mongoose Error: ", error);
+var options = { server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } }, 
+                replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS : 30000 } } };       
+ 
+var mongodbUri = 'mongodb://lernt:burnunit@ds133814.mlab.com:33814/lernt';
+ 
+mongoose.connect(mongodbUri, options);
+var db = mongoose.connection;             
+ 
+db.on('error', console.error.bind(console, 'connection error:'));  
+ 
+db.once('open', function() {
+  // Wait for the database connection to establish, then start the app.
+  console.log('Connected to '+ mongodbUri);                         
 });
 
-db.once("open", function() {
-  console.log("Mongoose connection successful.");
-});
 
 app.listen(process.env.PORT || 8080, function() {
   console.log("App running!");
