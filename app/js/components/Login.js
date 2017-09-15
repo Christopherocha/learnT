@@ -11,10 +11,14 @@ this.state = {
     }
 handleSubmit = (e, data) => {
         e.preventDefault()
+        console.log(this.state.email + "\n" + this.state.password)
         auth.login(this.state.email, this.state.password)
 }
 handleEmailChange = (e) => {
-        this.setState( {email: e.target.value} )
+        this.setState({
+            email: e.target.value,
+            username: e.target.value
+        })
     }
 handlePasswordChange = (e) => {
         this.setState( {password: e.target.value} )
@@ -38,11 +42,11 @@ renderLoginForm = () => {
 
                     <h5>Email</h5>
                     <input
-                      value={this.state.topic}
+                      value={this.state.email}
                       type="email"
                       className="form-control"
                       id="email"
-                      onChange={this.handleChange}
+                      onChange={this.handleEmailChange}
                       required
                     />
 
@@ -52,7 +56,7 @@ renderLoginForm = () => {
                       type="password"
                       className="form-control"
                       id="password"
-                      onChange={this.handleChange}
+                      onChange={this.handlePasswordChange}
                       required
                     />
 

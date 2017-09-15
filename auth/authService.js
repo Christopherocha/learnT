@@ -35,8 +35,8 @@ this.login = this.login.bind(this)
 login(email, password) {
     this.auth0.client.login({
       realm: 'learntDB',
-      email,
-      password
+      username: email,
+      password: password
     }, (err, authResult) => {
       if (err) {
         alert('Error: ' + err.description)
@@ -51,6 +51,7 @@ login(email, password) {
 signup(email, password){
     this.auth0.redirect.signupAndLogin({
       connection: 'learntDB',
+      username,
       email,
       password,
     }, function(err) {
