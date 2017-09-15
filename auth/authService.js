@@ -32,10 +32,10 @@ this.login = this.login.bind(this)
     this.signup = this.signup.bind(this)
     this.loginWithGoogle = this.loginWithGoogle.bind(this)
   }
-login(username, password) {
+login(email, password) {
     this.auth0.client.login({
-      realm: 'react-auth0',
-      username,
+      realm: 'learntDB',
+      email,
       password
     }, (err, authResult) => {
       if (err) {
@@ -50,7 +50,7 @@ login(username, password) {
   }
 signup(email, password){
     this.auth0.redirect.signupAndLogin({
-      connection: 'react-auth0',
+      connection: 'learntDB',
       email,
       password,
     }, function(err) {
