@@ -17,7 +17,6 @@ handleSubmit = (e, data) => {
 handleEmailChange = (e) => {
         this.setState({
             email: e.target.value,
-            username: e.target.value
         })
     }
 handlePasswordChange = (e) => {
@@ -25,7 +24,7 @@ handlePasswordChange = (e) => {
     }
 logout = () => {
         auth.logout()
-        this.props._refresh()
+        // this.props._refresh()
     }
 renderLoginForm = () => {
         return(
