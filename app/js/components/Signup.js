@@ -1,36 +1,37 @@
 // Import dependencies
 import React from "react";
 import helper from "./utils/helpers";
+import auth from '../../../auth/initAuth'
 
 // Creates and exports the Signup component
 export default class Signup extends React.Component {
-
-  // Initial state setup
   constructor(props) {
     super(props);
-
-    this.state = {}
+    this.state = {
+      email: null,
+      password: null
+    };
   }
 
-  // During initial load...
-  componentDidMount() {
+  handleSubmit = (e, data) => {
+    e.preventDefault();
+    auth.signup(this.state.email, this.state.password);
+  };
+  handleEmailChange = e => {
+    this.setState({ email: e.target.value });
+    console.log("email", this.state.email);
+  };
+  handlePasswordChange = e => {
+    this.setState({ password: e.target.value });
+    console.log("password", this.state.password);
+  };
 
-    // Grab the user from the database
-    helper.login().then(data => {
-      
-      // Sets articles from the db to the results array
-      this.setState({results: data}); 
-    });
-  }
-
-  // Render the component: displays the saved articles 
+  // Render the component: displays the saved articles
   // or notifies user to start saving articles
   render() {
-
     return (
       <div>
         <div className="panel panel-default">
-
           <div className="panel-heading">
             <h3 className="panel-title">Signup</h3>
           </div>
@@ -38,42 +39,42 @@ export default class Signup extends React.Component {
           <div className="panel-body">
             <form onSubmit={this.handleSubmit}>
               <div className="form-group">
-
-              <h5>Username</h5>
+                <h5>Username</h5>
                 <input
-                   value={this.state.topic}
+                  value={this.state.topic}
                   type="text"
                   className="form-control"
                   id="username"
-                  onChange={this.handleChange}
+                  onChange={this.handleUsernameChange}
                   required
                 />
 
                 <h5>Email</h5>
                 <input
-                   value={this.state.topic}
+                  value={this.state.topic}
                   type="email"
                   className="form-control"
                   id="email"
-                  onChange={this.handleChange}
+                  onChange={this.handleEmailChange}
                   required
                 />
 
                 <h5>Password</h5>
                 <input
-                   value={this.state.password}
+                  value={this.state.password}
                   type="password"
                   className="form-control"
                   id="password"
-                  onChange={this.handleChange}
+                  onChange={this.handlePasswordChange}
                   required
                 />
 
-                <button className="btn-sm btn-primary" type="submit">Submit</button>
+                <button className="btn-sm btn-primary" type="submit">
+                  Submit
+                </button>
               </div>
             </form>
           </div>
-          
         </div>
       </div>
     );

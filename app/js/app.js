@@ -2,6 +2,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
+
 // Grabs the Routes
 import routes from "./config/routes";
 
