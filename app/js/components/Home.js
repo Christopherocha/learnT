@@ -10,6 +10,26 @@ export default class Home extends React.Component {
     super(props);
   }
 
+    componentDidMount() {
+        helper.getPosts().then(function (response) {
+          console.log('get posts');
+          console.log(response);
+        }.bind(this));
+
+        // var post = {
+        //     title: "this is a title",
+        //     body: "I like your body",
+        //     creator:"59b752b9057e2232f4a43030",
+        //     link: "link",
+        //     followers: ["59b7542977c0e82f1cf6be8b", "59b7542977c0e82f1cf6be8d" ]
+        // }
+        // helper.savePost(post.creator, post).then(function(response){
+        //   helper.getPosts().then(function (response) {
+        //     console.log(response);
+        //   }.bind(this));
+        // }.bind(this))
+    }
+
   render(){
     return(
       <div>

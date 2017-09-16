@@ -31,10 +31,11 @@ var PostSchema = new Schema ({
         required: true,
         default: 0
     }, 
-    userId: {
+    creator: {
         type: Schema.Types.ObjectId,
         ref: "User"
-    }
+    },
+    followers: [{ type: Schema.Types.ObjectId, ref: "User" }]
 });
 
 var Post = mongoose.model("Post", PostSchema);

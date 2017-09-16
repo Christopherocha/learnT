@@ -7,6 +7,7 @@ var Post = require("../models/Post.js");
 router.get("/users", function(req, res) {
   User.find({})
   .populate("posts")
+  .populate("favorites")
   .exec(function(err, users){
     if(err) throw err;
     else{
@@ -32,6 +33,8 @@ router.get("/login", function(req, res) {
 //find all of the posts to populate feed and other things
 router.get("/posts", function(req, res) {
   Post.find({})
+  .populate('creator')
+  .populate('followers')
   .exec( function(err, posts){
     if(err) throw err;
     else{
@@ -45,6 +48,8 @@ router.get("/post/:id", function(req, res) {
   Post.findOne(
     {"_id":req.params.id}
   )
+  .populate('creator')
+  .populate('followers')
   .exec(function(err, post){
     if(err) throw err
     else{
@@ -70,18 +75,17 @@ router.post("/post/:userid", function(req, res) {
   newPost.save(function(err, doc){
     if(err) throw err;
     else{
-      User.findOneAndUpdate({"_id":req.params.userid}, {$set: {'post': doc._id}}, {new:true}, 
+      User.findOneAndUpdate({"_id":req.params.userid}, {$push: {'posts': doc._id}}, {new:true}, 
       function(err, doc){   
         if(err) throw err;
         else{res.send(doc)}
       })
     }
-
   })
 });
 
 //update user info and profile
-router.put('/user/id', function(req, res, next) {
+router.put('/user/:id', function(req, res, next) {
   console.log(req.body)
   User.findOneAndUpdate({ "_id": req.params.id }, { $set: { 'user': req.body } }, { new: true },
     function (err, doc) {
@@ -89,6 +93,27 @@ router.put('/user/id', function(req, res, next) {
       else { res.send(doc) }
     })
 });
+
+//add favorite to user
+router.put('/user/:id', function(req, res, next) {
+  console.log(req.body)
+  User.findOneAndUpdate({ "_id": req.params.id }, { $push: { favorites: req.body.postid } }, { new: true },
+    function (err, doc) {
+      if (err) throw err;
+      else { res.send(doc) }
+    })
+});
+
+//add a follower to post
+router.put('/post/:id', function(req, res, next) {
+  console.log(req.body)
+  Post.findOneAndUpdate({ _id: req.params.id }, { $push: { followers: req.body.userid } }, { new: true },
+    function (err, doc) {
+      if (err) throw err;
+      else { res.send(doc) }
+    })
+});
+
 
 
 //remove a post
