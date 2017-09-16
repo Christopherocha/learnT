@@ -39,7 +39,7 @@ export default (
       <Route path="/signup" component={Signup}></Route>
 
       
-    	<IndexRoute component={Login} />
+    	<IndexRoute component={Home} />
     </Route>
   </Router>
 

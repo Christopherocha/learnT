@@ -25,9 +25,7 @@ export default class Signup extends React.Component {
     this.setState({ password: e.target.value });
     console.log("password", this.state.password);
   };
-
-  // Render the component: displays the saved articles
-  // or notifies user to start saving articles
+  //Shows the Signup form for Users
   render() {
     return (
       <div>
