@@ -17,7 +17,21 @@ router.get("/users", function(req, res) {
 });
 
 //login get user info to fill out profile page and stuff
+router.get("/user/:email", function(req, res) {
+  User.findOne({
+    email: req.params.email
+}).populate("posts")
+  .exec(function(err, user){
+    if(err) throw err
+    else{
+      res.send(user)
+    }
+  })
+});
+
+//login get user info to fill out profile page and stuff
 router.get("/login", function(req, res) {
+  console.log(req.body)
   User.findOne({
     email: req.body.email,
     password: req.body.password

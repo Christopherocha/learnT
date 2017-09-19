@@ -8,14 +8,22 @@ export default class Profile extends React.Component {
   // Initial state setup
   constructor(props) {
     super(props);
+    this.state = {
+        user : {}
+    }
   }
 
   componentDidMount() {
-      console.log('component did mount!');
-      helper.getPosts().then(function (response) {
+      var user = {
+          email: "sarah@aol.com",
+          password: "password" 
+        }
+    
+      console.log('component did mount');
+      helper.getUser(user.email).then(function (response) {
         console.log(response);
         console.log('yay!');
-
+        this.setState({user : response.data});
       }.bind(this));
     }
 
@@ -37,12 +45,12 @@ render() {
                 <span className="black-text">
                         <div className="row valign-wrapper">
                             <div className="col m4 s12"><h5>Username</h5></div>
-                            <div className="col m8 s12" id="username">The Best Dood</div>
+                            <div className="col m8 s12" id="username">{this.state.user.userName}</div>
                         </div>
                         <div className="row valign-wrapper">
                             <div className="col m4 s12" id="email"><h5>Email</h5></div>
 
-                            <div className="col m8 s12">coolguy@aol.com</div>
+                            <div className="col m8 s12">{this.state.user.email}</div>
                         </div>
                         <div className="row valign-wrapper">
                             <div className="col m4 s12"><h5><i className="material-icons left">location_on</i></h5></div>

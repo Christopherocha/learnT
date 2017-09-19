@@ -8,12 +8,17 @@ export default class Home extends React.Component {
   // Initial state setup
   constructor(props) {
     super(props);
+    this.state = {
+        posts: []
+    }
   }
 
     componentDidMount() {
         helper.getPosts().then(function (response) {
           console.log('get posts');
           console.log(response);
+          this.setState({ posts: response.data})
+
         }.bind(this));
 
         // var post = {
@@ -52,32 +57,25 @@ export default class Home extends React.Component {
                   </div>
               </div>
           </div>
-          <div className="row">
-              <div className="card">
-                  <div className="card-image">
-                      <img className="userPostPic" src="https://images-na.ssl-images-amazon.com/images/M/MV5BMjA3NTM2OTU5M15BMl5BanBnXkFtZTcwOTExNjM0Mg@@._V1_UX214_CR0,0,214,317_AL_.jpg" />
-                      <span className="black-text card-title">SporkOnTheBeach</span>
-                  </div>
-                  <div className="center-align card-content">
-                      <p>I learned that cats are the best!</p>
-                      <p>Posted on</p>
-                      <p>August 4 at 9:03pm</p>
-                  </div>
-              </div>
-          </div>
-          <div className="row">
-              <div className="card">
-                  <div className="card-image">
-                      <img className="userPostPic" src="https://vignette3.wikia.nocookie.net/theoffice/images/8/89/110714office-jenna1.jpg/revision/latest?cb=20130513021443" />
-                      <span className="black-text card-title">SrirchaPam</span>
-                  </div>
-                  <div className="center-align card-content">
-                      <p>I learned that dogs are pretty heckin great.</p>
-                      <p>Posted on</p>
-                      <p>August 2 at 3:34pm</p>
-                  </div>
-              </div>
-          </div>
+                <ul>
+                  {
+                    this.state.posts.map((post, idx) => {
+                      
+                      return (
+                          <div className="row">
+                            <article className="card">
+                              <li key={idx}>
+                                  {/* create a post component <Article article={article} />*/}
+                                  <p> {post.title} </p>
+                                  <p> {post.body} </p>
+                              </li>
+                            </article>
+                          </div>
+                      )
+                    })
+                  }
+                </ul>
+         
           </section>
       </div>
     )
