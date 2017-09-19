@@ -45,7 +45,7 @@ export default class Main extends React.Component{
                 </ul>
             </div>
 	    </nav>
-
+        <div className="container">
         <div className="jumbotron">
           <div>
           <h1>LearnT</h1>
@@ -58,6 +58,7 @@ export default class Main extends React.Component{
           {this.props.children}
         </div>
 
+      </div>
       </div>
       )
     }

@@ -40,7 +40,7 @@ export default class Signup extends React.Component {
   //Shows the Signup form for Users
   render() {
     return (
-      <div>
+      <div className="container">
         <div className="panel panel-default">
           <div className="panel-heading">
             <h3 className="panel-title">Signup</h3>

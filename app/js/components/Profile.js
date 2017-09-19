@@ -33,7 +33,7 @@ export default class Profile extends React.Component {
 
 render() {
       return (
-      <div>
+      <div className="container">
       <div className="row">
         <div className="col m6 s12 center-align">
             <div className="row">
@@ -73,14 +73,48 @@ render() {
             </div>
             </div>
           </div>
+          <div className="row">
+            <div className="panel panel-default">
 
-          <section className="col m4 s8">
+              <div className="panel-heading">
+                <h3 className="panel-title">What did you learn today?</h3>
+              </div>
+
+              <div className="panel-body">
+                <form onSubmit={this.handleSubmit}>
+                  <div className="form-group">
+
+                    <h5>Title</h5>
+                    <input
+                      value={this.state.title}
+                      type="text"
+                      className="form-control"
+                      id="email"
+                      onChange={this.handleTitleChange}
+                      required
+                    />
+
+                    <h5>Body</h5>
+                    <input
+                      value={this.state.body}
+                      type="text"
+                      className="form-control"
+                      id="body"
+                      onChange={this.handleBodyChange}
+                      required
+                    />
+
+                    <button className="btn-sm btn-success" type="submit">Post</button>
+                  </div>
+                </form>
+              </div>
+          </div>
           <div className="row">
               <div className="col m12 center-align">
                   <h5>Most Recent Posts</h5>
               </div>
           </div>
-
+          <div className="col m12 center-align">
                 <ul>
                   {
                     this.state.posts.map((post, idx) => {
@@ -93,43 +127,16 @@ render() {
                                   <p> {post.title} </p>
                                   <p> {post.body} </p>
                               </li>
+                              <button className="btn-sm btn-primary">Upvote</button>
+                              <button className="btn-sm btn-danger">Downvote</button>
                             </article>
                           </div>
                       )
                     })
                   }
-                </ul>*
-          <div className="row">
-              <div className="card">
-                  <div className="center-align card-content">
-                      <p>TIL</p>
-                      <p>I like cats!</p>
-                      <p>Posted on</p>
-                      <p>August 7 at 10:20pm</p>
-                  </div>
-              </div>
+                </ul>
           </div>
-          <div className="row">
-              <div className="card">
-                  <div className="center-align card-content">
-                      <p>TIL</p>
-                      <p>I am a cat!</p>
-                      <p>Posted on</p>
-                      <p>August 4 at 9:03pm</p>
-                  </div>
-              </div>
           </div>
-          <div className="row">
-              <div className="card">
-                  <div className="center-align card-content">
-                      <p>TIL</p>
-                      <p>I have 4 cats.</p>
-                      <p>Posted on</p>
-                      <p>August 2 at 3:34pm</p>
-                  </div>
-              </div>
-          </div>
-          </section>
           </div>
       )
     }

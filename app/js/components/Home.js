@@ -37,7 +37,7 @@ export default class Home extends React.Component {
 
   render(){
     return(
-      <div>
+      <div className="container">
         <section className="col m4 s8">
           <div className="row">
               <div className="col m12 center-align">
@@ -57,6 +57,7 @@ export default class Home extends React.Component {
                   </div>
               </div>
           </div>
+          <section className="col m4 s8">
                 <ul>
                   {
                     this.state.posts.map((post, idx) => {
@@ -69,6 +70,8 @@ export default class Home extends React.Component {
                                   <p> {post.title} </p>
                                   <p> {post.body} </p>
                               </li>
+                              <button className="btn-sm btn-primary">Upvote</button>
+                              <button className="btn-sm btn-danger">Downvote</button>
                             </article>
                           </div>
                       )
@@ -76,6 +79,7 @@ export default class Home extends React.Component {
                   }
                 </ul>
          
+          </section>
           </section>
       </div>
     )

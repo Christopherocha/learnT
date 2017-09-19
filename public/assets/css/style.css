@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Merriweather');
+@import url('https://fonts.googleapis.com/css?family=Istok+Web|Teko');
 
 nav, 
 .nav-wrapper,
@@ -7,7 +7,7 @@ nav,
 }
 
 body {
-    font-family: 'Merriweather', serif;
+    font-family: 'Istok Web', sans-serif;
 }
 
 .jumbotron {
