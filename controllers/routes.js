@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 var User = require("../models/User.js");
 var Post = require("../models/Post.js");
+// var auth = require("../auth/initAuth")
 
 //get list of all the users... might not need this route
 router.get("/users", function(req, res) {
@@ -137,5 +138,9 @@ router.delete('/removeUser/:id', function(req, res, next) {
     });
   });
 });
+
+router.get('/callback', function(req, res, next) {
+  auth.parseHash();
+})
 
 module.exports = router;
