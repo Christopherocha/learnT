@@ -19,7 +19,7 @@ router.get("/users", function(req, res) {
 //login get user info to fill out profile page and stuff
 router.get("/login", function(req, res) {
   User.findOne({
-    name: req.body.name,
+    email: req.body.email,
     password: req.body.password
 }).populate("posts")
   .exec(function(err, user){

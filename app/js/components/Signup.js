@@ -8,6 +8,7 @@ export default class Signup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      username: null,
       email: null,
       password: null
     };
@@ -16,6 +17,7 @@ export default class Signup extends React.Component {
   handleSubmit = (e, data) => {
     e.preventDefault();
     auth.signup(this.state.email, this.state.password);
+
   };
   handleEmailChange = e => {
     this.setState({ email: e.target.value });
@@ -24,6 +26,10 @@ export default class Signup extends React.Component {
   handlePasswordChange = e => {
     this.setState({ password: e.target.value });
     console.log("password", this.state.password);
+  };
+  handleUsernameChange = e => {
+    this.setState({ username: e.target.value });
+    console.log("username", this.state.username);
   };
   //Shows the Signup form for Users
   render() {

@@ -3,8 +3,8 @@ var axios = require("axios");
 
 var helper = {
 
-  login: function(){
-    return axios.get("/login");
+  login: function(user){
+    return axios.get("/login", user);
   },
 
   getUsers: function() {

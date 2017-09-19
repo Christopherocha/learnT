@@ -11,11 +11,11 @@ var UserSchema = new Schema ({
     },
     firstName: {
         type: String,
-        required: "First name is Required"
+        required: false
     }, 
     lastName: {
         type: String, 
-        required: "Last name is Required"
+        required: false
     }, 
     email: {
         type: String,

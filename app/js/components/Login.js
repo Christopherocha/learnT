@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import auth from '../../../auth/initAuth';
+import helper from "./utils/helpers";
 
 class Login extends Component {
     constructor(props){
