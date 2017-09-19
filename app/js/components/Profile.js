@@ -110,11 +110,11 @@ render() {
               </div>
           </div>
           <div className="row">
-              <div className="col m12 center-align">
+              <div className="col m12">
                   <h5>Most Recent Posts</h5>
               </div>
           </div>
-          <div className="col m12 center-align">
+          <div className="col m12">
                 <ul>
                   {
                     this.state.posts.map((post, idx) => {

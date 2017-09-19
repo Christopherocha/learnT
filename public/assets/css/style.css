@@ -55,3 +55,7 @@ h5 {
     width: 100%;
     max-width: 150px;
 }
+
+.card {
+    padding: 20px 15px;
+}
