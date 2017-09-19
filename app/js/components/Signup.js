@@ -10,6 +10,7 @@ export default class Signup extends React.Component {
     this.state = {
       username: null,
       email: null,
+      username: null,
       password: null
     };
   }
@@ -22,6 +23,11 @@ export default class Signup extends React.Component {
   handleEmailChange = e => {
     this.setState({ email: e.target.value });
     console.log("email", this.state.email);
+  };
+  handleUsernameChange = e => {
+    this.setState({ username: e.target.value });
+    console.log("username", this.state.username);
+    console.log(typeof{username})
   };
   handlePasswordChange = e => {
     this.setState({ password: e.target.value });
@@ -43,7 +49,7 @@ export default class Signup extends React.Component {
           <div className="panel-body">
             <form onSubmit={this.handleSubmit}>
               <div className="form-group">
-                <h5>Username</h5>
+                {/* <h5>Username</h5>
                 <input
                   value={this.state.topic}
                   type="text"
@@ -51,7 +57,7 @@ export default class Signup extends React.Component {
                   id="username"
                   onChange={this.handleUsernameChange}
                   required
-                />
+                /> */}
 
                 <h5>Email</h5>
                 <input

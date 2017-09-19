@@ -14,6 +14,7 @@ handleSubmit = (e, data) => {
         e.preventDefault()
         console.log(this.state.email + "\n" + this.state.password)
         auth.login(this.state.email, this.state.password)
+        this.props.loggedIn(true)
 }
 handleEmailChange = (e) => {
         this.setState({
@@ -25,7 +26,7 @@ handlePasswordChange = (e) => {
     }
 logout = () => {
         auth.logout()
-        // this.props._refresh()
+        {this.props.loggedIn(false)}
     }
 renderLoginForm = () => {
         return(

@@ -51,7 +51,6 @@ login(email, password) {
 signup(email, password){
     this.auth0.redirect.signupAndLogin({
       connection: 'learntDB',
-      username,
       email,
       password,
     }, function(err) {
