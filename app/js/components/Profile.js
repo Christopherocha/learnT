@@ -9,7 +9,8 @@ export default class Profile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        user : {}
+        user : {},
+        posts: []
     }
   }
 
@@ -24,6 +25,8 @@ export default class Profile extends React.Component {
         console.log(response);
         console.log('yay!');
         this.setState({user : response.data});
+        this.setState({posts: response.data.posts})
+        console.log(this.state.user);
       }.bind(this));
     }
 
@@ -77,6 +80,25 @@ render() {
                   <h5>Most Recent Posts</h5>
               </div>
           </div>
+
+                <ul>
+                  {
+                    this.state.posts.map((post, idx) => {
+                      
+                      return (
+                          <div className="row">
+                            <article className="card">
+                              <li key={idx}>
+                                  {/* create a post component <Article article={article} />*/}
+                                  <p> {post.title} </p>
+                                  <p> {post.body} </p>
+                              </li>
+                            </article>
+                          </div>
+                      )
+                    })
+                  }
+                </ul>*
           <div className="row">
               <div className="card">
                   <div className="center-align card-content">
