@@ -8,7 +8,7 @@ import React from "react";
 // the IndexRoute (catch-all route)
 //import router, {Route, Router, hashHistory, IndexRoute} from "react-router";
 
-import { Router, Route, Switch, hashHistory, IndexRoute } from 'react-router'
+import { Router, Route, Switch, hashHistory, IndexRoute, browserHistory } from 'react-router'
 
 
 // import {router from 'react-router';
@@ -31,7 +31,7 @@ import Signup from "../components/Signup";
 export default (
 
   // The high level component is the Router component
-  <Router history={hashHistory}>
+  <Router history={browserHistory}>
     <Route path="/" component={Main}>
     	<Route path="/profile" component={Profile}></Route>
     	<Route path="/home" component={Home}></Route>

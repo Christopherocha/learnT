@@ -4,6 +4,8 @@ import {Link} from "react-router";
 
 import helper from './utils/helpers';
 
+import auth from '../../../auth/initAuth';
+
 export default class Main extends React.Component{
     constructor(props){
       super(props);
@@ -18,10 +20,14 @@ export default class Main extends React.Component{
           console.log(response);
           console.log('yay!');
         }.bind(this));
-    }
+        
+        if(window.location.hash) {
+          auth.parseHash(window.location.hash)
+        }
+      }
 
     componentDidUpdate() {
-
+      // auth.parseHash(window.location.hash)
     }
 
     render() {
