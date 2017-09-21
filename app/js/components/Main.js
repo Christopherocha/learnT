@@ -21,9 +21,16 @@ export default class Main extends React.Component{
           console.log('yay!');
         }.bind(this));
         
-        if(window.location.hash) {
-          auth.parseHash(window.location.hash)
+        console.log(auth.loggedIn());
+
+        if(!auth.loggedIn()){
+          if(window.location.hash) {
+            auth.parseHash(window.location.hash)
+          }
+        } else {
+          auth.getProfile();
         }
+
       }
 
     componentDidUpdate() {
