@@ -14,16 +14,14 @@ export default class Profile extends React.Component {
     }
   }
 
-  componentDidMount() {
-      var user = {
-          email: "sarah@aol.com",
-          password: "password" 
-        }
-    
-      console.log('component did mount');
-      helper.getUser(user.email).then(function (response) {
+  componentDidMount() {    
+      console.log("I am in the main... or am I in the Profile? Check me out!");
+      console.log(this.props.location.state.user)
+
+      console.log(this.props)
+      helper.getUser(this.props.location.state.user._id).then(function (response) {
         console.log(response);
-        console.log('yay!');
+        console.log('got a user');
         this.setState({user : response.data});
         this.setState({posts: response.data.posts})
         console.log(this.state.user);

@@ -18,9 +18,9 @@ router.get("/users", function(req, res) {
 });
 
 //login get user info to fill out profile page and stuff
-router.get("/user/:email", function(req, res) {
+router.get("/user/:id", function(req, res) {
   User.findOne({
-    email: req.params.email
+    _id: req.params.id
 }).populate("posts")
   .exec(function(err, user){
     if(err) throw err
