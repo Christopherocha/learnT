@@ -1,6 +1,7 @@
 // Import dependencies
 import React from "react";
 import helper from "./utils/helpers";
+import Input from "./children/Input"
 
 // Creates and exports the Home component
 export default class Home extends React.Component {
@@ -11,6 +12,7 @@ export default class Home extends React.Component {
     this.state = {
         posts: []
     }
+    this.setPost = this.setPost.bind(this);
   }
 
     componentDidMount() {
@@ -34,10 +36,14 @@ export default class Home extends React.Component {
         //   }.bind(this));
         // }.bind(this))
     }
+    //pass up info from Input component
+    setPost(title, body, link){
+      this.setState({title: title, body: body, link: link})
+    }
 
   render(){
     return(
-      <div>
+      <div className="container">
         <section className="col m4 s8">
           <div className="row">
               <div className="col m12 center-align">
@@ -57,6 +63,10 @@ export default class Home extends React.Component {
                   </div>
               </div>
           </div>
+         <div className="inputComp">
+           <Input setPost={this.setPost} />
+         </div>
+          <section className="col m4 s8">
                 <ul>
                   {
                     this.state.posts.map((post, idx) => {
@@ -69,6 +79,8 @@ export default class Home extends React.Component {
                                   <p> {post.title} </p>
                                   <p> {post.body} </p>
                               </li>
+                              <button className="btn-sm btn-primary">Upvote</button>
+                              <button className="btn-sm btn-danger">Downvote</button>
                             </article>
                           </div>
                       )
@@ -76,6 +88,7 @@ export default class Home extends React.Component {
                   }
                 </ul>
          
+          </section>
           </section>
       </div>
     )

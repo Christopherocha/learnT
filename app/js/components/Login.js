@@ -30,7 +30,7 @@ logout = () => {
     }
 renderLoginForm = () => {
         return(
-          <div>
+          <div className="container">
             <div className="panel panel-default">
 
               <div className="panel-heading">
@@ -73,7 +73,7 @@ renderLoginForm = () => {
 renderLogout = () => {
         return(
             <div>
-                <button onClick={ this.logout }>You are logged in ! Click to logout !</button>
+                <button onClick={ this.logout }>You are logged in! Click to logout!</button>
             </div>
         )
     }

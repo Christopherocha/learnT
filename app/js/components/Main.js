@@ -4,6 +4,8 @@ import {Link} from "react-router";
 
 import helper from './utils/helpers';
 
+import auth from '../../../auth/initAuth';
+
 export default class Main extends React.Component{
     constructor(props){
       super(props);
@@ -23,10 +25,21 @@ export default class Main extends React.Component{
           console.log(response);
           console.log('yay!');
         }.bind(this));
-    }
+        
+        console.log(auth.loggedIn());
+
+        if(!auth.loggedIn()){
+          if(window.location.hash) {
+            auth.parseHash(window.location.hash)
+          }
+        } else {
+          auth.getProfile();
+        }
+
+      }
 
     componentDidUpdate() {
-
+      // auth.parseHash(window.location.hash)
     }
 
 
@@ -51,7 +64,7 @@ export default class Main extends React.Component{
                 </ul>
             </div>
 	    </nav>
-
+        <div className="container">
         <div className="jumbotron">
           <div>
           <h1>LearnT</h1>
@@ -64,6 +77,7 @@ export default class Main extends React.Component{
           {this.props.children}
         </div>
 
+      </div>
       </div>
       )
     }
