@@ -10,11 +10,16 @@ this.state = {
             password: null
         }
     }
+
+componentDidMount(){
+     console.log(this.props);
+}
 handleSubmit = (e, data) => {
         e.preventDefault()
         console.log(this.state.email + "\n" + this.state.password)
         auth.login(this.state.email, this.state.password)
-        this.props.loggedIn(true)
+        //this.props.loggedIn(true)
+        auth.loggedIn(true)
 }
 handleEmailChange = (e) => {
         this.setState({
@@ -26,7 +31,8 @@ handlePasswordChange = (e) => {
     }
 logout = () => {
         auth.logout()
-        {this.props.loggedIn(false)}
+        //{this.props.loggedIn(false)}
+        {auth.loggedIn(false)}
     }
 renderLoginForm = () => {
         return(

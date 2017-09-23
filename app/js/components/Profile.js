@@ -14,7 +14,6 @@ export default class Profile extends React.Component {
         }
     }
 
-<<<<<<< HEAD
   componentDidMount() {    
       console.log("I am in the main... or am I in the Profile? Check me out!");
       console.log(this.props.location.state.user)
@@ -27,22 +26,6 @@ export default class Profile extends React.Component {
         this.setState({posts: response.data.posts})
         console.log(this.state.user);
       }.bind(this));
-=======
-    componentDidMount() {
-        var user = {
-            email: "sarah@aol.com",
-            password: "password"
-        }
-
-        console.log('component did mount');
-        helper.getUser(user.email).then(function (response) {
-            console.log(response);
-            console.log('yay!');
-            this.setState({ user: response.data });
-            this.setState({ posts: response.data.posts })
-            console.log(this.state.user);
-        }.bind(this));
->>>>>>> 3afb969301a2b107c3515494f9559dfbcafe26f7
     }
 
 

@@ -11,7 +11,8 @@ export default class Main extends React.Component{
       super(props);
       this.state = {
         user : {
-          _id: "59b752b9057e2232f4a43030"
+          _id: "59b7542977c0e82f1cf6be8b",
+          client_id: ""
         }
       }
     }
