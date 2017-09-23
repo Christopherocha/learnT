@@ -15,7 +15,7 @@ export default class Profile extends React.Component {
     }
 
   componentDidMount() {    
-      console.log("I am in the main... or am I in the Profile? Check me out!");
+      console.log("profile");
       console.log(this.props.location.state.user)
 
       console.log(this.props)
