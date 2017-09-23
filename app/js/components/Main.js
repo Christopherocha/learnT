@@ -25,10 +25,15 @@ export default class Main extends React.Component{
           if(window.location.hash) {
             auth.parseHash(window.location.hash)
           } 
-        } else {
-          console.log('made it to the else')
-          auth.getUser(localStorage.getItem('accessToken'))
-        } 
+        } else { 
+          console.log('made it in the else');
+          auth.parseHash(localStorage.getItem('id_token'))
+        }
+        
+        // } else {
+        //   console.log('made it to the else')
+        //   auth.getUser(localStorage.getItem('accessToken'))
+        // } 
 
         helper.getUsers().then(function (response) {
           console.log(response);
@@ -40,9 +45,9 @@ export default class Main extends React.Component{
         }.bind(this));
       }
 
-    componentDidUpdate() {
-      // auth.parseHash(window.location.hash)
-    }
+    // componentDidUpdate() {
+    //   // auth.parseHash(window.location.hash)
+    // }
 
 
     render() {

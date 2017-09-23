@@ -28,7 +28,7 @@ export default class AuthService extends EventEmitter {
       responseType: 'token id_token',
       redirectUri: `${window.location.origin}/`
     })
-this.login = this.login.bind(this)
+    this.login = this.login.bind(this)
     this.signup = this.signup.bind(this)
     this.loginWithGoogle = this.loginWithGoogle.bind(this)
   }
@@ -36,14 +36,17 @@ login(email, password) {
     this.auth0.client.login({
       realm: 'learntDB',
       username: email,
-      password: password
+      password: password,
+      scope: 'openid profile'
     }, (err, authResult) => {
       if (err) {
         alert('Error: ' + err.description)
         return
       }
+      console.log(authResult);
       if (authResult && authResult.idToken && authResult.accessToken) {
         this.setToken(authResult.accessToken, authResult.idToken)
+        this.getUser(authResult.accessToken)
         window.location = window.location.origin //redirect to main page
       }
     })
