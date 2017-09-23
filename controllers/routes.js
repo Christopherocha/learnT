@@ -48,6 +48,7 @@ router.get("/login", function(req, res) {
 //find all of the posts to populate feed and other things
 router.get("/posts", function(req, res) {
   Post.find({})
+  .sort({ upVote: -1 })
   .populate('creator')
   .populate('followers')
   .exec( function(err, posts){
