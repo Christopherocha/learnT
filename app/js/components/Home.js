@@ -12,6 +12,7 @@ export default class Home extends React.Component {
     this.state = {
         posts: []
     }
+
     this.setPost = this.setPost.bind(this);
   }
 
@@ -50,7 +51,7 @@ export default class Home extends React.Component {
                   <h5>Things We've learned</h5>
               </div>
           </div>
-          <div className="row">
+          {/* <div className="row">
               <div className="card">
                   <div className="card-image">
                       <img className="userPostPic" src="https://scontent-dft4-2.xx.fbcdn.net/v/t31.0-8/280055_2289006864966_4414621_o.jpg?oh=f3165f65c0a69eaf222912bbbd8e1a74&oe=59F4992E" />
@@ -62,7 +63,7 @@ export default class Home extends React.Component {
                       <p>August 7 at 10:20pm</p>
                   </div>
               </div>
-          </div>
+          </div> */}
          <div className="inputComp">
            <Input setPost={this.setPost} />
          </div>
@@ -79,8 +80,8 @@ export default class Home extends React.Component {
                                   <p> {post.title} </p>
                                   <p> {post.body} </p>
                               </li>
-                              <button className="btn-sm btn-primary">Upvote</button>
-                              <button className="btn-sm btn-danger">Downvote</button>
+                              <button className="btn-sm btn-primary"><i className="material-icons">thumb_up</i>{post.upVote}</button>
+                              <button className="btn-sm btn-danger"><i className="material-icons">thumb_down</i>{post.downVote}</button>
                             </article>
                           </div>
                       )

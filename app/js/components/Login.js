@@ -10,6 +10,10 @@ this.state = {
             password: null
         }
     }
+
+componentDidMount(){
+     console.log(this.props);
+}
 handleSubmit = (e, data) => {
         e.preventDefault()
         console.log(this.state.email + "\n" + this.state.password)

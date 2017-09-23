@@ -125,8 +125,8 @@ export default class Profile extends React.Component {
                                                     <p> {post.title} </p>
                                                     <p> {post.body} </p>
                                                 </li>
-                                                <button className="btn-sm btn-primary">Upvote</button>
-                                                <button className="btn-sm btn-danger">Downvote</button>
+                                                <p><i className="material-icons">thumb_up</i>{post.upVote}</p>
+                                                <p><i className="material-icons">thumb_down</i>{post.downVote}</p>
                                             </article>
                                         </div>
                                     )
