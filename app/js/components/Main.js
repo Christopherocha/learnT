@@ -17,6 +17,18 @@ export default class Main extends React.Component{
     }
 
     componentDidMount() {
+      console.log(auth.loggedIn());
+      
+        if(!auth.loggedIn()){
+          console.log('not logged in')
+          if(window.location.hash) {
+            auth.parseHash(window.location.hash)
+          } 
+        } else {
+          console.log('made it to the else')
+          auth.getUser(localStorage.getItem('accessToken'))
+        } 
+
         helper.getUsers().then(function (response) {
           console.log(response);
         }.bind(this));
@@ -25,17 +37,6 @@ export default class Main extends React.Component{
           console.log(response);
           console.log('yay!');
         }.bind(this));
-        
-        console.log(auth.loggedIn());
-
-        if(!auth.loggedIn()){
-          if(window.location.hash) {
-            auth.parseHash(window.location.hash)
-          }
-        } else {
-          auth.getProfile();
-        }
-
       }
 
     componentDidUpdate() {

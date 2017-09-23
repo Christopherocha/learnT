@@ -81,6 +81,16 @@ parseHash(hash) {
       }
     })
   }
+getUser(token) {
+  this.auth0.client.userInfo(token, (error, profile) => {
+    if (error) {
+      console.log('Error loading the Profile', error)
+    } else {
+      this.setProfile(profile);
+      this.getProfile();
+    }
+  })
+}
 loggedIn() {
     // Checks if there is a saved token and it's still valid
     const token = this.getToken()
