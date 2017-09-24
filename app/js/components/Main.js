@@ -24,9 +24,11 @@ export default class Main extends React.Component{
           if(window.location.hash) {
             auth.parseHash(window.location.hash)
           } 
+
         } else {
           console.log('made it to the else')
-          auth.getUser(localStorage.getItem('access_token'))
+          //auth.getUser(localStorage.getItem('access_token')) //this works too
+          auth.getUser(localStorage.getItem('id_token'))
           var profile = JSON.parse(localStorage.getItem('profile'));
           console.log(profile);
           var userId = profile.sub.replace("auth0|", "");
@@ -35,6 +37,7 @@ export default class Main extends React.Component{
           console.log(this.state.user._id);
           
         } 
+
 
         helper.getUsers().then(function (response) {
           console.log(response);
@@ -46,9 +49,9 @@ export default class Main extends React.Component{
         }.bind(this));
       }
 
-    componentDidUpdate() {
-      // auth.parseHash(window.location.hash)
-    }
+    // componentDidUpdate() {
+    //   // auth.parseHash(window.location.hash)
+    // }
 
 
     render() {
