@@ -11,8 +11,7 @@ export default class Main extends React.Component{
       super(props);
       this.state = {
         user : {
-          _id: "59b7542977c0e82f1cf6be8b",
-          client_id: ""
+          _id: "59b7542977c0e82f1cf6be8b"
         }
       }
     }
@@ -27,7 +26,14 @@ export default class Main extends React.Component{
           } 
         } else {
           console.log('made it to the else')
-          auth.getUser(localStorage.getItem('accessToken'))
+          auth.getUser(localStorage.getItem('access_token'))
+          var profile = JSON.parse(localStorage.getItem('profile'));
+          console.log(profile);
+          var userId = profile.sub.replace("auth0|", "");
+          console.log(userId);
+          this.setState({user:{ _id: userId}});
+          console.log(this.state.user._id);
+          
         } 
 
         helper.getUsers().then(function (response) {
@@ -36,7 +42,7 @@ export default class Main extends React.Component{
 
         helper.getPosts().then(function (response) {
           console.log(response);
-          console.log('yay!');
+          console.log('retrieved posts');
         }.bind(this));
       }
 
