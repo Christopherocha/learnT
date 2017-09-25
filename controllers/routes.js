@@ -103,7 +103,7 @@ router.post("/post/:userid", function(req, res) {
 //update user info and profile
 router.put('/user/:id', function(req, res, next) {
   console.log(req.body)
-  User.findOneAndUpdate({ "_id": req.params.id }, { $set: { 'user': req.body } }, { new: true },
+  User.findOneAndUpdate({ "_id": req.params.id }, { $set: { 'userName': req.body.user.userName, email:req.body.user.email} }, { new: true },
     function (err, doc) {
       if (err) throw err;
       else { res.send(doc) }

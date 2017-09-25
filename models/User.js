@@ -7,7 +7,7 @@ var UserSchema = new Schema ({
     userName: {
         type: String, 
         trim: true,
-        required: "Username is Required"
+        required: false
     },
     firstName: {
         type: String,

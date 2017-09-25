@@ -25,7 +25,8 @@ import Profile from "../components/Profile";
 import Home from "../components/Home";
 import Login from "../components/Login";
 import Signup from "../components/Signup";
-
+import ViewProfile from "../components/children/ViewProfile";
+import EditProfile from "../components/children/EditProfile";
 
 // Export the Routes
 export default (
@@ -33,7 +34,11 @@ export default (
   // The high level component is the Router component
   <Router history={browserHistory}>
     <Route path="/" component={Main}>
-    	<Route path="/profile" component={Profile}></Route>
+    	<Route path="/profile" component={Profile}>
+        <Route path="/view" component={ViewProfile}></Route>
+        <Route path="/edit" component={EditProfile}></Route>
+        <IndexRoute component={ViewProfile}/>
+      </Route>
     	<Route path="/home" component={Home}></Route>
       <Route path="/login" component={Login}></Route>
       <Route path="/signup" component={Signup}></Route>
