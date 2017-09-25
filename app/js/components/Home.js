@@ -14,35 +14,38 @@ export default class Home extends React.Component {
     }
 
     this.setPost = this.setPost.bind(this);
+    this.getPosts = this.getPosts.bind(this);
   }
 
     componentDidMount() {
-        helper.getPosts().then(function (response) {
-          console.log('get posts');
-          console.log(response);
-          this.setState({ posts: response.data})
+        // helper.getPosts().then(function (response) {
+        //   console.log('get posts');
+        //   console.log(response);
+        //   this.setState({ posts: response.data})
 
-        }.bind(this));
+        // }.bind(this));
 
+       this.getPosts();
        console.log(this.props)
 
-        // var post = {
-        //     title: "this is a title",
-        //     body: "I like your body",
-        //     creator:"59b752b9057e2232f4a43030",
-        //     link: "link",
-        //     followers: ["59b7542977c0e82f1cf6be8b", "59b7542977c0e82f1cf6be8d" ]
-        // }
-        // helper.savePost(post.creator, post).then(function(response){
-        //   helper.getPosts().then(function (response) {
-        //     console.log(response);
-        //   }.bind(this));
-        // }.bind(this))
     }
     //pass up info from Input component
     setPost(title, body, link){
       this.setState({title: title, body: body, link: link})
     }
+
+  componentDidUpdate(){
+    //this.getPosts();
+  }
+
+  getPosts(){
+    helper.getPosts().then(function (response) {
+      console.log('get posts');
+      console.log(response);
+      this.setState({ posts: response.data})
+
+    }.bind(this));
+  }
 
   render(){
     return(
@@ -67,7 +70,7 @@ export default class Home extends React.Component {
               </div>
           </div> */}
          <div className="inputComp">
-           <Input setPost={this.setPost}/>
+           <Input setPost={this.setPost} getPosts={this.getPosts}/>
          </div>
           <section className="col m4 s8">
                 <ul>

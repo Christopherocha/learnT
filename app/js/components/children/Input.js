@@ -34,7 +34,9 @@ export default class Input extends React.Component {
         console.log(profile);
         var userId = profile.sub.replace("auth0|", "");
         console.log(userId);
-        helper.savePost(userId, post);
+        helper.savePost(userId, post).then(function(response){
+            this.props.getPosts();
+        }.bind(this));
         this.props.setPost(this.state.title, this.state.body, this.state.link);
     }
 
