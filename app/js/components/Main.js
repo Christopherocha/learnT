@@ -76,7 +76,7 @@ export default class Main extends React.Component{
             </div>
 	    </nav>
         <div className="container">
-        <div className="jumbotron z-depth-2">
+        <div className="jumbotron z-depth-3">
           <div>
           <h1>LearnT</h1>
           <h2>What did you learn today?</h2>

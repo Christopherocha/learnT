@@ -67,8 +67,8 @@ export default class Input extends React.Component {
                                 />
 
                                 <button className="btn-sm btn-success" type="submit">Update</button>
-                                <Link className="waves-effect waves-light btn modal-trigger" to="/view">
-                                Done</Link>
+                                <Link className="modal-trigger" to="/view"><button className="btn-sm btn-primary">
+                                Done</button></Link>
                             </div>
                         </form>
                     </div>
