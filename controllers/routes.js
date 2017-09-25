@@ -4,6 +4,13 @@ var User = require("../models/User.js");
 var Post = require("../models/Post.js");
 // var auth = require("../auth/initAuth")
 
+//this is for the image upload might need to be in server file?
+var multer   =  require( 'multer' );
+var upload   =  multer( { dest: 'uploads/' } );
+var sizeOf   =  require( 'image-size' );
+require( 'string.prototype.startswith' );
+
+
 //get list of all the users... might not need this route
 router.get("/users", function(req, res) {
   User.find({})
@@ -109,6 +116,28 @@ router.put('/user/:id', function(req, res, next) {
       else { res.send(doc) }
     })
 });
+
+//upload image
+//router.post 
+router.put( '/upload', upload.single( 'file' ), function( req, res, next ) {
+  
+    if ( !req.file.mimetype.startsWith( 'image/' ) ) {
+      return res.status( 422 ).json( {
+        error : 'The uploaded file must be an image'
+      } );
+    }
+  
+    var dimensions = sizeOf( req.file.path );
+  
+    if ( ( dimensions.width < 640 ) || ( dimensions.height < 480 ) ) {
+      return res.status( 422 ).json( {
+        error : 'The image must be at least 640 x 480px'
+      } );
+    }
+  
+    return res.status( 200 ).send( req.file );
+  });
+
 
 //add favorite to user
 router.put('/user/:id', function(req, res, next) {
