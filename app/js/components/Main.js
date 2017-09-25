@@ -68,15 +68,15 @@ export default class Main extends React.Component{
                   <li><Link to="/signup">Signup</Link></li>
                 </ul>
                 <ul className="side-nav" id="mobile-demo">
-                  <li><Link to="/home">Home</Link></li>
-                  <li><Link to="/profile">Profile</Link></li>
+                  <li><Link to={{pathname:"/home", state:{user:this.state.user}}}>Home</Link></li>
+                  <li><Link to={{pathname:"/profile", state:{user:this.state.user}}}>Profile</Link></li>
                   <li><Link to="/login">Login</Link></li>
                   <li><Link to="/signup">Signup</Link></li>
                 </ul>
             </div>
 	    </nav>
         <div className="container">
-        <div className="jumbotron z-depth-2">
+        <div className="jumbotron z-depth-3">
           <div>
           <h1>LearnT</h1>
           <h2>What did you learn today?</h2>

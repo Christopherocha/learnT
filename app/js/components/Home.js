@@ -1,7 +1,8 @@
 // Import dependencies
 import React from "react";
 import helper from "./utils/helpers";
-import Input from "./children/Input"
+import Input from "./children/Input";
+import {Link} from "react-router";
 
 // Creates and exports the Home component
 export default class Home extends React.Component {
@@ -73,19 +74,7 @@ export default class Home extends React.Component {
                   <h5>Things We've learned</h5>
               </div>
           </div>
-          {/* <div className="row">
-              <div className="card">
-                  <div className="card-image">
-                      <img className="userPostPic" src="https://scontent-dft4-2.xx.fbcdn.net/v/t31.0-8/280055_2289006864966_4414621_o.jpg?oh=f3165f65c0a69eaf222912bbbd8e1a74&oe=59F4992E" />
-                      <span className="black-text card-title">UnCoolGuy1985</span>
-                  </div>
-                  <div className="center-align card-content">
-                      <p>I learned that fish can fly sometimes.</p>
-                      <p>Posted on</p>
-                      <p>August 7 at 10:20pm</p>
-                  </div>
-              </div>
-          </div> */}
+
          <div className="inputComp">
            <Input setPost={this.setPost} getPosts={this.getPosts}/>
          </div>
@@ -99,7 +88,7 @@ export default class Home extends React.Component {
                             <article className="card">
                               <li key={idx}>
                                   {/* create a post component <Article article={article} />*/}
-                                  <p> <a href={post.link}>{post.title}</a> </p>
+                                  <Link to={post.link}><p>{post.title}</p></Link>
                                   <p> {post.body} </p>
                                   <p> posted by: {post.creator.email} at {post.date} </p>
                               </li>

@@ -109,18 +109,18 @@ export default class Profile extends React.Component {
                             </form>
                         </div>
                     </div> */}
-                    <div className="row">
-                        <div className="col m12">
-                            <h5>Most Recent Posts</h5>
+                        <div className="row">
+                            <div className="col m12">
+                                <h5>Most Recent Posts</h5>
+                            </div>
                         </div>
-                    </div>
-                    <div className="col m12">
+
                         <ul>
                             {
                                 this.state.posts.map((post, idx) => {
 
                                     return (
-                                        <div className="row">
+                                        <div>
                                             <article className="card">
                                                 <li key={idx}>
                                                     {/* create a post component <Article article={article} />*/}
@@ -137,7 +137,6 @@ export default class Profile extends React.Component {
                         </ul>
                     </div>
                 </div >
-            </div >
         )
     }
 

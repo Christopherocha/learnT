@@ -49,8 +49,8 @@ export default class viewProfile extends React.Component {
                     </div>
                     <div className="row">
                         <div className="col s12">
-                            <Link className="waves-effect waves-light btn modal-trigger" to="/edit">
-                                <i className="material-icons">edit</i>Edit Info</Link>
+                        <Link className="modal-trigger" to="/edit"><button className="btn-sm btn-primary">
+                                <i className="material-icons">edit</i>Edit Info</button></Link>
                         </div>
                     </div>
                 </span>

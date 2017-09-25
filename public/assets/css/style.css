@@ -22,7 +22,7 @@ body {
     font-weight: 900 !important;
     width: 75%;
     padding: 25px;
-    margin: 10px auto;
+    margin: 15px auto;
     font-family: 'Patua One', serif;
 }
 
@@ -34,7 +34,7 @@ body {
 
 a:hover {
     text-decoration: none;
-    color: lightseagreen !important;
+    color: tan !important;
 }
 
 a:link,
