@@ -24,6 +24,8 @@ export default class Home extends React.Component {
 
         }.bind(this));
 
+       console.log(this.props)
+
         // var post = {
         //     title: "this is a title",
         //     body: "I like your body",
@@ -65,7 +67,7 @@ export default class Home extends React.Component {
               </div>
           </div> */}
          <div className="inputComp">
-           <Input setPost={this.setPost} />
+           <Input setPost={this.setPost}/>
          </div>
           <section className="col m4 s8">
                 <ul>
