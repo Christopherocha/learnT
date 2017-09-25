@@ -60,10 +60,8 @@ export default class Profile extends React.Component {
                         </div>
                         <div className="row">
                             <Dropzone/>
-     
-     
                  
-                            <a className="waves-effect waves-light btn"><i className="material-icons left">insert_photo</i>Change Photo</a>
+                            <button className="btn-sm btn-primary"><i className="material-icons center">insert_photo</i>Change Photo</button>
                         </div>
 
                     </div>
