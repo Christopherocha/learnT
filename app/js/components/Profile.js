@@ -1,6 +1,7 @@
 // Import dependencies
 import React from "react";
 import helper from "./utils/helpers";
+import Dropzone from "./DropzoneComponent";
 
 // Creates and exports the Profile component
 export default class Profile extends React.Component {
@@ -58,25 +59,13 @@ export default class Profile extends React.Component {
                             <img className="responsive-img" src="https://img.buzzfeed.com/buzzfeed-static/static/2014-01/campaign_images/webdr06/7/14/50-reasons-why-nicolas-cage-is-the-greatest-human-1-5571-1389124720-1_big.jpg" />
                         </div>
                         <div className="row">
-                        <div id="dropzone">
-                                <form action="/upload" className="dropzone needsclick dz-clickable" id="demo-upload">
-
-                                    <div className="dz-message needsclick">
-                                        Drop files here or click to upload.<br/>
-                                    </div>
-                                </form>
-                                <input type="file" multiple="multiple" className="dz-hidden-input" style={style}/>
-                            </div>
-                            <form onSubmit={this.uploadImage} action="/file-upload" method="post" encType="multipart/form-data">
-                                <input type="file" name="file" />
-                            </form>
-                            <form action="/file-upload" className="dropzone">
-                                <div className="fallback">
-                                    <input name="file" type="file" />
-                                </div>
-                            </form>
+                            <Dropzone/>
+     
+     
+                 
                             <a className="waves-effect waves-light btn"><i className="material-icons left">insert_photo</i>Change Photo</a>
                         </div>
+
                     </div>
                     <div className="col m6 s12">
                         <div className="card-panel">
@@ -153,3 +142,5 @@ export default class Profile extends React.Component {
     }
 
 }
+
+

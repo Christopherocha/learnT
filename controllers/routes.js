@@ -134,7 +134,11 @@ router.put( '/upload', upload.single( 'file' ), function( req, res, next ) {
         error : 'The image must be at least 640 x 480px'
       } );
     }
-  
+    // User.findOneAndUpdate({ "_id": req.params.id }, { $set: { 'image': req.file} }, { new: true },
+    // function (err, doc) {
+    //   if (err) throw err;
+    //   else { res.send(doc) }
+    // })
     return res.status( 200 ).send( req.file );
   });
 
