@@ -80,5 +80,9 @@ h5 {
 }
 
 .card {
-    padding: 20px 15px;
+    padding: 15px 15px;
+}
+
+.loggedInbtn {
+    margin: 15px auto !important;
 }

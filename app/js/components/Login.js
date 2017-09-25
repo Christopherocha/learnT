@@ -74,8 +74,8 @@ renderLoginForm = () => {
     }
 renderLogout = () => {
         return(
-            <div>
-                <button onClick={ this.logout }>You are logged in! Click to logout!</button>
+            <div className="container center">
+                <button className="loggedInbtn btn-sm btn-warning center" onClick={ this.logout }>You are logged in! Click to logout!</button>
             </div>
         )
     }
