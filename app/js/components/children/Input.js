@@ -44,7 +44,7 @@ export default class Input extends React.Component {
     render() {
         return (
             <div className="row">
-                <div className="panel panel-default">
+                <div className="panel panel-default z-depth-2">
 
                     <div className="panel-heading">
                         <h3 className="panel-title">What did you learn today?</h3>

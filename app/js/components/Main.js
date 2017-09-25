@@ -59,7 +59,7 @@ export default class Main extends React.Component{
         <div>
         <nav className="z-depth-4">
             <div className="nav-wrapper">
-                <Link to="/" className="brand-logo">learnT</Link>
+                <Link to="/" className="brand-logo">LearnT</Link>
                 <Link to="#" data-activates="mobile-demo" className="button-collapse"><i className="material-icons">menu</i></Link>
                 <ul className="right hide-on-med-and-down">
                   <li><Link to={{pathname:"/home", state:{user:this.state.user}}}>Home</Link></li>
@@ -76,7 +76,7 @@ export default class Main extends React.Component{
             </div>
 	    </nav>
         <div className="container">
-        <div className="jumbotron">
+        <div className="jumbotron z-depth-2">
           <div>
           <h1>LearnT</h1>
           <h2>What did you learn today?</h2>

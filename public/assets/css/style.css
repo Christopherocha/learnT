@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Istok+Web|Teko');
+@import url('https://fonts.googleapis.com/css?family=Patua+One');
 
 nav, 
 .nav-wrapper,
@@ -12,6 +13,23 @@ body {
 
 .jumbotron {
     text-align: center;
+    background-color: tan;
+    background-image: url("../images/corkboard.jpg");
+    background-size: 100%;
+    border: 5px solid #5C2E04;
+    color: black;
+    text-shadow: 1px 1px white;
+    font-weight: 900 !important;
+    width: 75%;
+    padding: 25px;
+    margin: 10px auto;
+    font-family: 'Patua One', serif;
+}
+
+.brand-logo {
+    font-family: 'Patua One', serif;
+    font-weight: 750 !important;
+    text-shadow: 1px 1px black;
 }
 
 a:hover {
