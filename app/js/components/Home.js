@@ -99,8 +99,9 @@ export default class Home extends React.Component {
                             <article className="card">
                               <li key={idx}>
                                   {/* create a post component <Article article={article} />*/}
-                                  <p> {post.title} </p>
+                                  <p> <a href={post.link}>{post.title}</a> </p>
                                   <p> {post.body} </p>
+                                  <p> posted by: {post.creator.email} at {post.date} </p>
                               </li>
                               <button onClick={(e) => this.like(e, post)} className="btn-sm btn-primary"><i className="material-icons">thumb_up</i>{post.upVote}</button>
                               <button onClick={(e) => this.dislike(e, post)} className="btn-sm btn-danger"><i className="material-icons">thumb_down</i>{post.downVote}</button>

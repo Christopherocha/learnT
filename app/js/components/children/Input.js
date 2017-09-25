@@ -25,15 +25,16 @@ export default class Input extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         console.log("click");
-        var post = {
-            title : this.state.title,
-            body: this.state.body,
-            link: this.state.link
-        }
         var profile = JSON.parse(localStorage.getItem('profile'));
         console.log(profile);
         var userId = profile.sub.replace("auth0|", "");
         console.log(userId);
+        var post = {
+            title : this.state.title,
+            body: this.state.body,
+            link: this.state.link,
+            creator: userId
+        }
         helper.savePost(userId, post).then(function(response){
             this.props.getPosts();
         }.bind(this));
