@@ -5,6 +5,11 @@ var bodyParser = require("body-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
 
+// //this is for the image upload might need to be in router file?
+// var multer   =  require( 'multer' );
+// var upload   =  multer( { dest: 'uploads/' } );
+// var sizeOf   =  require( 'image-size' );
+
 
 mongoose.Promise = Promise;
 
