@@ -1,5 +1,6 @@
 import React from 'react';
 import helper from '../utils/helpers';
+import {Link} from "react-router"; 
 
 export default class Input extends React.Component {
 
@@ -66,6 +67,8 @@ export default class Input extends React.Component {
                                 />
 
                                 <button className="btn-sm btn-success" type="submit">Update</button>
+                                <Link className="waves-effect waves-light btn modal-trigger" to="/view">
+                                Done</Link>
                             </div>
                         </form>
                     </div>
