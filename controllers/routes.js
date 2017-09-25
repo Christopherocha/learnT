@@ -130,6 +130,23 @@ router.put('/post/:id', function(req, res, next) {
     })
 });
 
+router.put('/like/:id', function(req, res, next) {
+  console.log(req.body)
+  Post.findOneAndUpdate({ _id: req.params.id }, { $set: { upVote: req.body.upVote } }, { new: true },
+    function (err, doc) {
+      if (err) throw err;
+      else { res.send(doc) }
+    })
+});
+
+router.put('/dislike/:id', function(req, res, next) {
+  console.log(req.body)
+  Post.findOneAndUpdate({ _id: req.params.id }, { $set: { downVote: req.body.downVote } }, { new: true },
+    function (err, doc) {
+      if (err) throw err;
+      else { res.send(doc) }
+    })
+});
 
 
 //remove a post

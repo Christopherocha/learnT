@@ -32,9 +32,18 @@ var helper = {
     //{ name: name, password: password, email:email  }
   },
 
-  updateUser: function(id){
+  updateUser: function(id, user){
       return axios.put("/user/"+id, {user: user});
   },
+
+  like: function(id, upVote){
+    return axios.put("/like/"+id, {upVote: upVote});
+  },
+
+  dislike: function(id, downVote){
+    return axios.put("/dislike/"+id, {downVote: downVote});
+  },
+
 
   deletePost: function(id) {
     return axios.delete("/removePost/"+id);

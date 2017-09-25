@@ -15,16 +15,11 @@ export default class Home extends React.Component {
 
     this.setPost = this.setPost.bind(this);
     this.getPosts = this.getPosts.bind(this);
+    this.like = this.like.bind(this);
+    this.dislike = this.dislike.bind(this);
   }
 
     componentDidMount() {
-        // helper.getPosts().then(function (response) {
-        //   console.log('get posts');
-        //   console.log(response);
-        //   this.setState({ posts: response.data})
-
-        // }.bind(this));
-
        this.getPosts();
        console.log(this.props)
 
@@ -44,6 +39,28 @@ export default class Home extends React.Component {
       console.log(response);
       this.setState({ posts: response.data})
 
+    }.bind(this));
+  }
+
+  like(e, post){
+      e.preventDefault();
+      console.log(post);
+      var upVote = parseInt(post.upVote)+1
+      console.log(upVote);
+      helper.like(post._id, upVote).then(function(response){
+        console.log("updated the likes ", response);
+        this.getPosts()
+      }.bind(this));
+  }
+
+  dislike(e, post){
+    e.preventDefault();    
+    console.log(post);
+    var downVote = parseInt(post.downVote)+1
+    console.log(downVote);
+    helper.dislike(post._id, downVote).then(function(response){
+      console.log("updated the dislikes ", response);
+      this.getPosts()
     }.bind(this));
   }
 
@@ -85,8 +102,8 @@ export default class Home extends React.Component {
                                   <p> {post.title} </p>
                                   <p> {post.body} </p>
                               </li>
-                              <button className="btn-sm btn-primary"><i className="material-icons">thumb_up</i>{post.upVote}</button>
-                              <button className="btn-sm btn-danger"><i className="material-icons">thumb_down</i>{post.downVote}</button>
+                              <button onClick={(e) => this.like(e, post)} className="btn-sm btn-primary"><i className="material-icons">thumb_up</i>{post.upVote}</button>
+                              <button onClick={(e) => this.dislike(e, post)} className="btn-sm btn-danger"><i className="material-icons">thumb_down</i>{post.downVote}</button>
                             </article>
                           </div>
                       )
