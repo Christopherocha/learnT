@@ -41,11 +41,11 @@ export default class viewProfile extends React.Component {
                     </div>
                     <div className="row valign-wrapper">
                         <div className="col m4 s12"><h5><i className="material-icons left">location_on</i></h5></div>
-                        <div className="col m8 s12">Austin, TX</div>
+                        <div className="col m8 s12">{this.state.user.location}</div>
                     </div>
                     <div className="row valign-wrapper">
                         <div className="col m4 s12"><h5>About Me</h5></div>
-                        <div className="col m8 s12">I am still Nicolas Cage all filled with rage.</div>
+                        <div className="col m8 s12">{this.state.user.about}</div>
                     </div>
                     <div className="row">
                         <div className="col s12">

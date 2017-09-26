@@ -8,7 +8,9 @@ export default class Input extends React.Component {
         super(props);
         this.state = {
             userName: '',
-            email: ''
+            email: '',
+            about: '',
+            location: ''
         };
         this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
@@ -30,7 +32,9 @@ export default class Input extends React.Component {
         console.log(userId);
         var user = {
             userName : this.state.userName,
-            email: this.state.email
+            email: this.state.email,
+            about: this.state.about,
+            location: this.state.location
         }
         helper.updateUser(userId, user).then(function(response){
             console.log("updated user");
@@ -62,6 +66,26 @@ export default class Input extends React.Component {
                                     type="text"
                                     className="form-control"
                                     id="email"
+                                    onChange={this.handleChange}
+                                    required
+                                />
+
+                                <h5>About</h5>
+                                <input
+                                    value={this.state.about}
+                                    type="text"
+                                    className="form-control"
+                                    id="about"
+                                    onChange={this.handleChange}
+                                    required
+                                />
+
+                                <h5>Location</h5>
+                                <input
+                                    value={this.state.location}
+                                    type="text"
+                                    className="form-control"
+                                    id="location"
                                     onChange={this.handleChange}
                                     required
                                 />

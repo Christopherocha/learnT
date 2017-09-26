@@ -12,7 +12,7 @@ export default class Profile extends React.Component {
         this.state = {
             user: {},
             posts: [], 
-            photoUrl: "https://img.buzzfeed.com/buzzfeed-static/static/2014-01/campaign_images/webdr06/7/14/50-reasons-why-nicolas-cage-is-the-greatest-human-1-5571-1389124720-1_big.jpg"
+            photoUrl: "./assets/images/silhouette.jpg"
         }
         
     }
@@ -55,12 +55,9 @@ export default class Profile extends React.Component {
             <div className="container">
                 <div className="row">
                     <div className="col m6 s12 center-align">
-                        <div className="row">
+                        <div className="row profilePic">
                             <img className="responsive-img" src={this.state.photoUrl} />
-                        </div>
-                        <div className="row">
                             <Dropzone user={this.state.user} id="widget-upload"/>                 
-                            <button className="btn-sm btn-primary"><i className="material-icons center">insert_photo</i>Change Photo</button>
                         </div>
 
                     </div>
@@ -71,41 +68,6 @@ export default class Profile extends React.Component {
                     </div>
                 </div>
                 <div className="row">
-                    {/* <div className="panel panel-default">
-
-                        <div className="panel-heading">
-                            <h3 className="panel-title">What did you learn today?</h3>
-                        </div>
-
-                        <div className="panel-body">
-                            <form onSubmit={this.handleSubmit}>
-                                <div className="form-group">
-
-                                    <h5>Title</h5>
-                                    <input
-                                        value={this.state.title}
-                                        type="text"
-                                        className="form-control"
-                                        id="email"
-                                        onChange={this.handleTitleChange}
-                                        required
-                                    />
-
-                                    <h5>Body</h5>
-                                    <input
-                                        value={this.state.body}
-                                        type="text"
-                                        className="form-control"
-                                        id="body"
-                                        onChange={this.handleBodyChange}
-                                        required
-                                    />
-
-                                    <button className="btn-sm btn-success" type="submit">Post</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div> */}
                         <div className="row">
                             <div className="col m12">
                                 <h5>Most Recent Posts</h5>

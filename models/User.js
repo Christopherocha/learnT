@@ -38,6 +38,14 @@ var UserSchema = new Schema ({
         type: String,
         required: false
     },
+    about:{
+        type: String,
+        required: false
+    },
+    location: {
+        type: String, 
+        required: false
+    },
     posts: [{ type: Schema.Types.ObjectId, ref: 'Post' }],
     favorites: [{ type: Schema.Types.ObjectId, ref: 'Post' }]
 });
