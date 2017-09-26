@@ -28,7 +28,26 @@ var storage = multer.diskStorage({
 });
 var upload = multer({storage: storage});
 
+//catch-all route
+router.get("/profile", function (req, res){
+  var path = __dirname.replace("controllers", "public/index.html")
+  res.sendFile(path)
+})
 
+router.get("/home", function (req, res){
+  var path = __dirname.replace("controllers", "public/index.html")
+  res.sendFile(path)
+})
+
+router.get("/signup", function (req, res){
+  var path = __dirname.replace("controllers", "public/index.html")
+  res.sendFile(path)
+})
+
+router.get("/login", function (req, res){
+  var path = __dirname.replace("controllers", "public/index.html")
+  res.sendFile(path)
+})
 
 //get list of all the users... might not need this route
 router.get("/users", function(req, res) {

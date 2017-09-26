@@ -18,9 +18,6 @@ export default class Profile extends React.Component {
     }
 
   componentDidMount() {    
-      console.log("profile");
-      console.log(this.props);
-      console.log(this.props.location.state.user)
 
       var profile = JSON.parse(localStorage.getItem('profile'));
       console.log(profile);
@@ -47,11 +44,6 @@ export default class Profile extends React.Component {
             console.log(this.state.user);
         }.bind(this))
     }
-
-    uploadImage(e){
-
-    }
-
 
     render() {
         const style = {visibility: 'hidden',

@@ -68,7 +68,7 @@ export default class Main extends React.Component{
                 <Link to="#" data-activates="mobile-demo" className="button-collapse"><i className="material-icons">menu</i></Link>
                 <ul className="right hide-on-med-and-down">
                   <li><Link to={{pathname:"/home", state:{user:this.state.user}}}>Home</Link></li>
-                  <li><Link to={{pathname:"/profile", state:{user:this.state.user}}}>Profile</Link></li>
+                  <li><Link to="/profile">Profile</Link></li>
                   <li><Link to="/login">Login</Link></li>
                   <li><Link to="/signup">Signup</Link></li>
                 </ul>
