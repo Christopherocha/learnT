@@ -12,7 +12,7 @@ export default class Profile extends React.Component {
         this.state = {
             user: {},
             posts: [], 
-            photoUrl: "https://img.buzzfeed.com/buzzfeed-static/static/2014-01/campaign_images/webdr06/7/14/50-reasons-why-nicolas-cage-is-the-greatest-human-1-5571-1389124720-1_big.jpg"
+            photoUrl: "./assets/images/silhouette.jpg"
         }
         
     }
