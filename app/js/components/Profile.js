@@ -11,7 +11,8 @@ export default class Profile extends React.Component {
         super(props);
         this.state = {
             user: {},
-            posts: []
+            posts: [], 
+            photoUrl: "https://img.buzzfeed.com/buzzfeed-static/static/2014-01/campaign_images/webdr06/7/14/50-reasons-why-nicolas-cage-is-the-greatest-human-1-5571-1389124720-1_big.jpg"
         }
         
     }
@@ -21,12 +22,18 @@ export default class Profile extends React.Component {
       console.log(this.props);
       console.log(this.props.location.state.user)
 
-      console.log(this.props)
-      helper.getUser(this.props.location.state.user._id).then(function (response) {
+      var profile = JSON.parse(localStorage.getItem('profile'));
+      console.log(profile);
+      var userId = profile.sub.replace("auth0|", "");
+
+      helper.getUser(userId).then(function (response) {
         console.log(response);
         console.log('got a user');
         this.setState({user : response.data});
         this.setState({posts: response.data.posts});
+        var photoUrl = response.data.userPhoto.replace("public", ".");
+        console.log(photoUrl);
+        this.setState({photoUrl: photoUrl});
         console.log(this.state.user);
       }.bind(this));
     }
@@ -57,7 +64,7 @@ export default class Profile extends React.Component {
                 <div className="row">
                     <div className="col m6 s12 center-align">
                         <div className="row">
-                            <img className="responsive-img" src="https://img.buzzfeed.com/buzzfeed-static/static/2014-01/campaign_images/webdr06/7/14/50-reasons-why-nicolas-cage-is-the-greatest-human-1-5571-1389124720-1_big.jpg" />
+                            <img className="responsive-img" src={this.state.photoUrl} />
                         </div>
                         <div className="row">
                             <Dropzone user={this.state.user} id="widget-upload"/>                 

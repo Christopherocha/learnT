@@ -8,7 +8,7 @@ var Post = require("../models/Post.js");
 var multer   =  require( 'multer' );
 //var upload   =  multer( { dest: 'uploads/' } );
 var storage = multer.diskStorage({
-  destination: './uploads/',
+  destination: './public/assets/images/uploads/',
   filename: function (req, file, cb) {
     // Mimetype stores the file type, set extensions according to filetype
     switch (file.mimetype) {
