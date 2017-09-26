@@ -1,12 +1,3 @@
-.drop{
-  padding:15px;
-  border-style:dashed;
-  border-color:#2c003a;
-  border-width:2px;
-  background-color:#fdfbfb;
-  color:#462a51;
-}
-
 
 /*
  * The MIT License
@@ -187,7 +178,9 @@
   min-height: 150px;
   border: 2px dashed rgba(0, 0, 0, 0.3);
   background: white;
-  padding: 20px 20px; }
+  padding: 20px 20px; 
+  position: absolute;
+  }
   .dropzone.dz-clickable {
     cursor: pointer; }
     .dropzone.dz-clickable * {
@@ -198,7 +191,7 @@
     display: none; }
   .dropzone.dz-drag-hover {
     border-style: solid; }
-    .dropzone.dz-drag-hover .dz-message {
+    .dropzone:hover, .dropzone.dz-drag-hover .dz-message {
       opacity: 0.5; }
   .dropzone .dz-message {
     text-align: center;

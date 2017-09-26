@@ -86,3 +86,7 @@ h5 {
 .loggedInbtn {
     margin: 15px auto !important;
 }
+
+.profilePic {
+    position: relative;
+}
