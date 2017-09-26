@@ -17,6 +17,8 @@ mongoose.Promise = Promise;
 // initialize express
 var app = express();
 
+app.set('port', process.env.PORT || 8080);
+
 // use morgan and body parser
 app.use(logger("dev"));
 app.use(bodyParser.json());
@@ -47,7 +49,23 @@ db.once('open', function() {
   console.log('Connected to '+ mongodbUri);                         
 });
 
+//socket.io
+var server = require('http').createServer(app);
+var io = require('socket.io')(server);
+var onlineUsers = 0;
 
-app.listen(process.env.PORT || 8080, function() {
+io.sockets.on('connection', function(socket){
+  onlineUsers++;
+
+  io.sockets.emit('onlineUsers', {onlineUsers: onlineUsers});
+
+  socket.on('disconnect', function(){
+    onlineUsers--;
+    io.sockets.emit('onlineUsers', {onlineUsers: onlineUsers});
+  })
+})
+
+
+server.listen(app.get('port'), function() {
   console.log("App running!");
 });

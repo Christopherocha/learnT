@@ -12,7 +12,8 @@ export default class Main extends React.Component{
       this.state = {
         user : {
           _id: ""
-        }
+        },
+        onlineUsers: null
       }
     }
 
@@ -38,7 +39,6 @@ export default class Main extends React.Component{
           
         } 
 
-
         helper.getUsers().then(function (response) {
           console.log(response);
         }.bind(this));
@@ -47,6 +47,11 @@ export default class Main extends React.Component{
           console.log(response);
           console.log('retrieved posts');
         }.bind(this));
+
+        let socket = io.connect();
+        socket.on('onlineUsers', (data) => {
+          this.setState({onlineUsers: data.onlineUsers});
+        });
       }
 
     // componentDidUpdate() {
@@ -84,6 +89,7 @@ export default class Main extends React.Component{
         </div>
 
         <div>
+          <p>there are {this.state.onlineUsers} online</p>
           {/* Displays search component or  saved component */}
           {this.props.children}
         </div>
