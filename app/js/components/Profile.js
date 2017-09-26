@@ -12,7 +12,7 @@ export default class Profile extends React.Component {
         this.state = {
             user: {},
             posts: [], 
-            photoUrl: "./assets/images/silhouette.jpg"
+            photoUrl: "./assets/images/silhouette.png"
         }
         
     }
