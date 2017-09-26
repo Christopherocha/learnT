@@ -6,9 +6,28 @@ var Post = require("../models/Post.js");
 
 //this is for the image upload might need to be in server file?
 var multer   =  require( 'multer' );
-var upload   =  multer( { dest: 'uploads/' } );
-var sizeOf   =  require( 'image-size' );
-require( 'string.prototype.startswith' );
+//var upload   =  multer( { dest: 'uploads/' } );
+var storage = multer.diskStorage({
+  destination: './uploads/',
+  filename: function (req, file, cb) {
+    // Mimetype stores the file type, set extensions according to filetype
+    switch (file.mimetype) {
+      case 'image/jpeg':
+        ext = '.jpeg';
+        break;
+      case 'image/png':
+        ext = '.png';
+        break;
+      case 'image/gif':
+        ext = '.gif';
+        break;
+    }
+
+    cb(null, file.originalname.slice(0, 4) + Date.now() + ext);
+  }
+});
+var upload = multer({storage: storage});
+
 
 
 //get list of all the users... might not need this route
@@ -119,28 +138,22 @@ router.put('/user/:id', function(req, res, next) {
 
 //upload image
 //router.post 
-router.put( '/upload', upload.single( 'file' ), function( req, res, next ) {
-  
-    if ( !req.file.mimetype.startsWith( 'image/' ) ) {
-      return res.status( 422 ).json( {
-        error : 'The uploaded file must be an image'
-      } );
-    }
-  
-    var dimensions = sizeOf( req.file.path );
-  
-    if ( ( dimensions.width < 640 ) || ( dimensions.height < 480 ) ) {
-      return res.status( 422 ).json( {
-        error : 'The image must be at least 640 x 480px'
-      } );
-    }
-    // User.findOneAndUpdate({ "_id": req.params.id }, { $set: { 'image': req.file} }, { new: true },
-    // function (err, doc) {
-    //   if (err) throw err;
-    //   else { res.send(doc) }
-    // })
-    return res.status( 200 ).send( req.file );
-  });
+router.put('/uploadHandler/:id', upload.single('file'), function (req, res, next) {
+  if (req.file && req.file.originalname) {
+    console.log(`Received file ${req.file.originalname}`);
+    console.log(req.file);
+    User.findOneAndUpdate({ "_id": req.params.id }, { $set: { 'userPhoto': req.file.path} }, { new: true },
+    function (err, doc) {
+      if (err) throw err;
+      else { res.send(doc) }
+    })
+  }
+  else{
+    console.log(req.body);
+    res.send("not sure"); 
+  }
+
+});
 
 
 //add favorite to user

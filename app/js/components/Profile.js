@@ -13,6 +13,7 @@ export default class Profile extends React.Component {
             user: {},
             posts: []
         }
+        
     }
 
   componentDidMount() {    
@@ -25,15 +26,15 @@ export default class Profile extends React.Component {
         console.log(response);
         console.log('got a user');
         this.setState({user : response.data});
-        this.setState({posts: response.data.posts})
+        this.setState({posts: response.data.posts});
         console.log(this.state.user);
       }.bind(this));
     }
 
     updateUser(user){
-        helper.updateUser(this.user._id, user).then(function(response){
+        helper.updateUser(this.state.user._id, user).then(function(response){
             console.log(response);
-            console.log('got a user');
+            console.log('updated a user');
             this.setState({user : response.data});
             this.setState({posts: response.data.posts})
             console.log(this.state.user);
@@ -59,10 +60,7 @@ export default class Profile extends React.Component {
                             <img className="responsive-img" src="https://img.buzzfeed.com/buzzfeed-static/static/2014-01/campaign_images/webdr06/7/14/50-reasons-why-nicolas-cage-is-the-greatest-human-1-5571-1389124720-1_big.jpg" />
                         </div>
                         <div className="row">
-                            <Dropzone/>
-     
-     
-                 
+                            <Dropzone user={this.state.user} id="widget-upload"/>
                             <a className="waves-effect waves-light btn"><i className="material-icons left">insert_photo</i>Change Photo</a>
                         </div>
 
