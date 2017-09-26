@@ -39,6 +39,8 @@ export default class Input extends React.Component {
             this.props.getPosts();
         }.bind(this));
         this.props.setPost(this.state.title, this.state.body, this.state.link);
+        //clear form after submit
+        this.setState({ title: "", body: "", link: ""});
     }
 
     render() {
