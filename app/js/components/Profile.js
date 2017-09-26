@@ -60,8 +60,8 @@ export default class Profile extends React.Component {
                             <img className="responsive-img" src="https://img.buzzfeed.com/buzzfeed-static/static/2014-01/campaign_images/webdr06/7/14/50-reasons-why-nicolas-cage-is-the-greatest-human-1-5571-1389124720-1_big.jpg" />
                         </div>
                         <div className="row">
-                            <Dropzone user={this.state.user} id="widget-upload"/>
-                            <a className="waves-effect waves-light btn"><i className="material-icons left">insert_photo</i>Change Photo</a>
+                            <Dropzone user={this.state.user} id="widget-upload"/>                 
+                            <button className="btn-sm btn-primary"><i className="material-icons center">insert_photo</i>Change Photo</button>
                         </div>
 
                     </div>

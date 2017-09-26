@@ -9,19 +9,20 @@ nav,
 
 body {
     font-family: 'Istok Web', sans-serif;
+    background-color: #DBDBDB;
 }
 
 .jumbotron {
     text-align: center;
-    background-color: tan;
+    background-color: #F8E680;
     background-image: url("../images/corkboard.jpg");
     background-size: 100%;
     border: 5px solid #5C2E04;
-    color: black;
+    color: #000000;
     text-shadow: 1px 1px white;
     font-weight: 900 !important;
-    width: 75%;
-    padding: 25px;
+    width: 90%;
+    padding: 0px;
     margin: 15px auto;
     font-family: 'Patua One', serif;
 }
@@ -64,6 +65,10 @@ h5 {
     margin-right: 3px;
 }
 
+.material-icons {
+    vertical-align: middle !important; 
+}
+
 .panel-title {
     color: #fff;
     font-size: 24px;
@@ -75,5 +80,9 @@ h5 {
 }
 
 .card {
-    padding: 20px 15px;
+    padding: 15px 15px;
+}
+
+.loggedInbtn {
+    margin: 15px auto !important;
 }

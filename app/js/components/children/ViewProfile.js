@@ -50,7 +50,7 @@ export default class viewProfile extends React.Component {
                     <div className="row">
                         <div className="col s12">
                         <Link className="modal-trigger" to="/edit"><button className="btn-sm btn-primary">
-                                <i className="material-icons">edit</i>Edit Info</button></Link>
+                                <i className="material-icons center">edit</i>Edit Info</button></Link>
                         </div>
                     </div>
                 </span>
