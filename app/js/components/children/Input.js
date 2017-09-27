@@ -12,7 +12,7 @@ export default class Input extends React.Component {
             link: '',
         };
         this.handleChange = this.handleChange.bind(this);
-		this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleChange(e) {
@@ -29,18 +29,25 @@ export default class Input extends React.Component {
         console.log(profile);
         var userId = profile.sub.replace("auth0|", "");
         console.log(userId);
+
+        var check = this.state.link;
+       
+        // add http:// if not present to make link work
+        if (check.indexOf('http') !== 0) {
+            check = 'http://' + check;
+        }
         var post = {
-            title : this.state.title,
+            title: this.state.title,
             body: this.state.body,
-            link: this.state.link,
+            link: check,
             creator: userId
         }
-        helper.savePost(userId, post).then(function(response){
+        helper.savePost(userId, post).then(function (response) {
             this.props.getPosts();
         }.bind(this));
         this.props.setPost(this.state.title, this.state.body, this.state.link);
         //clear form after submit
-        this.setState({ title: "", body: "", link: ""});
+        this.setState({ title: "", body: "", link: "" });
     }
 
     render() {
