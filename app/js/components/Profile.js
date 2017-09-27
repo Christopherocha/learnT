@@ -72,7 +72,7 @@ export default class Profile extends React.Component {
                 <div className="panel z-depth-3 content">
                 
                             <div className="panel-heading center">
-                              <h3 className="panel-title">Things We've Learned</h3>
+                              <h3 className="panel-title">Things I've Learned</h3>
                             </div>
                     <div className="panel-body">
 
