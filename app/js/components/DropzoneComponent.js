@@ -13,6 +13,7 @@ https://libraries.io/github/nousdecor/React-Dropzone-Component
 import React from 'react';
 import ReactDOM from 'react-dom';
 import DropzoneComponent from 'react-dropzone-component';
+import helper from './utils/helpers';
 
 export default class Dropzone extends React.Component {
     constructor(props) {
@@ -39,7 +40,11 @@ export default class Dropzone extends React.Component {
         // Simple callbacks work too, of course
         this.callback = () => console.log('Hello!');
 
-        this.success = file => console.log('uploaded', file);
+        this.success = file => {
+            console.log('uploaded', file) 
+            helper.profile();
+        
+        };
 
         this.removedfile = file => console.log('removing...', file);
 
