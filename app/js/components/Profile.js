@@ -2,6 +2,7 @@
 import React from "react";
 import helper from "./utils/helpers";
 import Dropzone from "./DropzoneComponent";
+import {Link} from "react-router";
 
 // Creates and exports the Profile component
 export default class Profile extends React.Component {
@@ -68,36 +69,44 @@ export default class Profile extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div className="row">
-                    <div className="row">
-                        <div className="col m12">
-                            <h5>Most Recent Posts</h5>
-                        </div>
-                    </div>
+                <div className="panel z-depth-3 content">
+                
+                            <div className="panel-heading center">
+                              <h3 className="panel-title">Things We've Learned</h3>
+                            </div>
+                    <div className="panel-body">
 
                     <ul>
                         {
                             this.state.posts.map((post, idx) => {
 
                                 return (
-                                    <div>
-                                        <article className="card">
+                                    <div className="row">
+                                        <div className="panel z-depth-2">
                                             <li key={idx}>
                                                 {/* create a post component <Article article={article} />*/}
 
                                                 {/* <p> {post.title} </p> */}
                                                 {/* link to external site */}
-                                                <a href={post.link} target="_blank"><p>{post.title}</p></a>
-                                                <p> {post.body} </p>
-                                            </li>
-                                            <p><i className="material-icons">thumb_up</i>{post.upVote}</p>
-                                            <p><i className="material-icons">thumb_down</i>{post.downVote}</p>
-                                        </article>
+                                                <Link to={post.link} target="_blank" className="linkOut">
+                                                    <div className="panel-heading panel-primary">
+                                                    TIL: {post.title}
+                                                    </div>
+                                                </Link>
+                                                <div className="panel-body">
+                                                    <p> {post.body} </p>
+                                                    <p><i className="material-icons">thumb_up</i>{post.upVote}</p>
+                                                    <p><i className="material-icons">thumb_down</i>{post.downVote}</p>
+                                                </div>
+                                                </li>
+                                           
+                                        </div>
                                     </div>
                                 )
                             })
                         }
                     </ul>
+                </div>
                 </div>
             </div >
         )
