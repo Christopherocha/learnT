@@ -90,3 +90,8 @@ h5 {
 .profilePic {
     position: relative;
 }
+
+.responsive-img {
+    min-height: 250px;
+    min-height: 250px;
+}
