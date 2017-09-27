@@ -11,44 +11,45 @@ export default class Profile extends React.Component {
         super(props);
         this.state = {
             user: {},
-            posts: [], 
+            posts: [],
             photoUrl: "./assets/images/silhouette.png"
         }
-        
+
     }
 
-  componentDidMount() {    
+    componentDidMount() {
 
-      var profile = JSON.parse(localStorage.getItem('profile'));
-      console.log(profile);
-      var userId = profile.sub.replace("auth0|", "");
+        var profile = JSON.parse(localStorage.getItem('profile'));
+        console.log(profile);
+        var userId = profile.sub.replace("auth0|", "");
 
-      helper.getUser(userId).then(function (response) {
-        console.log(response);
-        console.log('got a user');
-        this.setState({user : response.data});
-        this.setState({posts: response.data.posts});
-        var photoUrl = response.data.userPhoto.replace("public", ".");
-        console.log(photoUrl);
-        this.setState({photoUrl: photoUrl});
-        console.log(this.state.user);
-      }.bind(this));
+        helper.getUser(userId).then(function (response) {
+            console.log(response);
+            console.log('got a user');
+            this.setState({ user: response.data });
+            this.setState({ posts: response.data.posts });
+            var photoUrl = response.data.userPhoto.replace("public", ".");
+            console.log(photoUrl);
+            this.setState({ photoUrl: photoUrl });
+            console.log(this.state.user);
+        }.bind(this));
     }
 
-    updateUser(user){
-        helper.updateUser(this.state.user._id, user).then(function(response){
+    updateUser(user) {
+        helper.updateUser(this.state.user._id, user).then(function (response) {
             console.log(response);
             console.log('updated a user');
-            this.setState({user : response.data});
-            this.setState({posts: response.data.posts})
+            this.setState({ user: response.data });
+            this.setState({ posts: response.data.posts })
             console.log(this.state.user);
         }.bind(this))
     }
 
     render() {
-        const style = {visibility: 'hidden',
-         position: 'absolute',
-         top: '0px', left: '0px', height: '0px', width: '0px'
+        const style = {
+            visibility: 'hidden',
+            position: 'absolute',
+            top: '0px', left: '0px', height: '0px', width: '0px'
         }
 
         return (
@@ -57,7 +58,7 @@ export default class Profile extends React.Component {
                     <div className="col m6 s12 center-align">
                         <div className="row profilePic">
                             <img className="responsive-img" src={this.state.photoUrl} />
-                            <Dropzone user={this.state.user} id="widget-upload"/>                 
+                            <Dropzone user={this.state.user} id="widget-upload" />
                         </div>
 
                     </div>
@@ -68,34 +69,37 @@ export default class Profile extends React.Component {
                     </div>
                 </div>
                 <div className="row">
-                        <div className="row">
-                            <div className="col m12">
-                                <h5>Most Recent Posts</h5>
-                            </div>
+                    <div className="row">
+                        <div className="col m12">
+                            <h5>Most Recent Posts</h5>
                         </div>
-
-                        <ul>
-                            {
-                                this.state.posts.map((post, idx) => {
-
-                                    return (
-                                        <div>
-                                            <article className="card">
-                                                <li key={idx}>
-                                                    {/* create a post component <Article article={article} />*/}
-                                                    <p> {post.title} </p>
-                                                    <p> {post.body} </p>
-                                                </li>
-                                                <p><i className="material-icons">thumb_up</i>{post.upVote}</p>
-                                                <p><i className="material-icons">thumb_down</i>{post.downVote}</p>
-                                            </article>
-                                        </div>
-                                    )
-                                })
-                            }
-                        </ul>
                     </div>
-                </div >
+
+                    <ul>
+                        {
+                            this.state.posts.map((post, idx) => {
+
+                                return (
+                                    <div>
+                                        <article className="card">
+                                            <li key={idx}>
+                                                {/* create a post component <Article article={article} />*/}
+
+                                                {/* <p> {post.title} </p> */}
+                                                {/* link to external site */}
+                                                <a href={post.link} target="_blank"><p>{post.title}</p></a>
+                                                <p> {post.body} </p>
+                                            </li>
+                                            <p><i className="material-icons">thumb_up</i>{post.upVote}</p>
+                                            <p><i className="material-icons">thumb_down</i>{post.downVote}</p>
+                                        </article>
+                                    </div>
+                                )
+                            })
+                        }
+                    </ul>
+                </div>
+            </div >
         )
     }
 

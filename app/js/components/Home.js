@@ -88,7 +88,9 @@ export default class Home extends React.Component {
                             <article className="card">
                               <li key={idx}>
                                   {/* create a post component <Article article={article} />*/}
-                                  <Link to={post.link}><p>{post.title}</p></Link>
+                                  {/* <Link to={post.link}><p>{post.title}</p></Link> */}
+                                  {/* link to external site */}
+                                  <a href={post.link} target="_blank"><p>{post.title}</p></a>
                                   <p> {post.body} </p>
                                   <p> posted by: {post.creator.email} at {post.date} </p>
                               </li>
