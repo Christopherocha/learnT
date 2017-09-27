@@ -7,12 +7,17 @@ nav,
 .panel-heading {
     background-color: #616161 !important;
 }
+/* Post heading color along with input section */
+.panel-primary {
+    background-color: #2B618E !important;
+}
 
 body {
     font-family: 'Istok Web', sans-serif;
     background-color: #DBDBDB;
 }
 
+/* Establishes the cork board look for jumbotron heading */
 .jumbotron {
     text-align: center;
     background-color: #F8E680;
@@ -27,12 +32,14 @@ body {
     font-family: 'Patua One', serif;
 }
 
+/* Sets logo font and weight in nav bar */
 .brand-logo {
     font-family: 'Patua One', serif;
     font-weight: 750 !important;
     text-shadow: 1px 1px black;
 }
 
+/* Establishes link color for navigation on hover */
 a:hover {
     text-decoration: none;
     color: tan !important;
@@ -44,6 +51,7 @@ a:visited {
     text-decoration: none;
 }
 
+/* Establish heading font sizes */
 h1 {
     font-size: 48px;
 }
@@ -59,41 +67,39 @@ h3 {
 h4,
 h5 {
     font-size: 20px;
+    margin: 0px !important;
 }
 
+/* Overrides materialize input setting for space consolidation */
+input {
+    margin: 0 0 5px 0 !important;
+    padding: 0px !important;
+}
+
+/* Adds space between buttons */
 .btn-sm {
     margin-right: 3px;
 }
 
+/* Centers material icons */
 .material-icons {
     vertical-align: middle !important; 
 }
 
+/* Establishes font color and size for panel titles */
 .panel-title {
     color: #fff;
     font-size: 24px;
 }
 
-.userPostPic {
-    width: 100%;
-    max-width: 150px;
-}
-
-.card {
-    padding: 15px 15px;
-}
-
+/* Establish button format for when user is logged in */
 .loggedInbtn {
     margin: 15px auto !important;
 }
 
+/* Establishes profile pic area as relative so the dropzone can fit in */
 .profilePic {
     position: relative;
-}
-
-.responsive-img {
-    min-height: 250px;
-    min-height: 250px;
 }
 
 .conversation-container > .header {
@@ -103,4 +109,8 @@ h5 {
   .message > .response {
     background-color: black;
     color: white;
+  }
+
+  .linkOut {
+      width: 100% !important;
   }

@@ -88,9 +88,11 @@ export default class Home extends React.Component {
                                   {/* create a post component <Article article={article} />*/}
                                   {/* <Link to={post.link}><p>{post.title}</p></Link> */}
                                   {/* link to external site */}
-                                  <div className="panel-heading">
-                                    <Link to={post.link} target="_blank" className="linkOut">{post.title}</Link>
-                                  </div>
+                                  <Link to={post.link} target="_blank" className="linkOut">
+                                    <div className="panel-heading panel-primary">
+                                      TIL: {post.title}
+                                    </div>
+                                  </Link>
                                   <div className="panel-body">
                                     <p> {post.body} </p>
                                     <p> posted by: {post.creator.email} at {post.date} </p>
