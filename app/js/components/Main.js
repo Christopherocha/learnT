@@ -85,11 +85,12 @@ export default class Main extends React.Component{
           <div>
           <h1>LearnT</h1>
           <h2>What did you learn today?</h2>
+          <p className="center">There are {this.state.onlineUsers} users online!</p>
           </div>
         </div>
 
         <div>
-          <p>there are {this.state.onlineUsers} online</p>
+          
           {/* Displays search component or  saved component */}
           {this.props.children}
         </div>

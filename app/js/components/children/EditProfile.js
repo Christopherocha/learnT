@@ -50,7 +50,7 @@ export default class Input extends React.Component {
                         <form onSubmit={this.handleSubmit}>
                             <div className="form-group">
 
-                                <h5>User Name</h5>
+                                <h5>Name</h5>
                                 <input
                                     value={this.state.userName}
                                     type="text"

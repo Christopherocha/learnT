@@ -31,7 +31,7 @@ export default class viewProfile extends React.Component {
             <div>
                 <span className="black-text">
                     <div className="row valign-wrapper">
-                        <div className="col m4 s12"><h5>Username</h5></div>
+                        <div className="col m4 s12"><h5>Name</h5></div>
                         <div className="col m8 s12" id="username">{this.state.user.userName}</div>
                     </div>
                     <div className="row valign-wrapper">
