@@ -67,14 +67,12 @@ export default class Home extends React.Component {
 
   render(){
     return(
-      <div className="container">
-        <section className="col m4 s8">
-          <div className="row">
-              <div className="col m12 center-align">
-                  <h5>Things We've learned</h5>
-              </div>
-          </div>
+        <div className="panel z-depth-3 content">
 
+            <div className="panel-heading center">
+              <h3 className="panel-title">Things We've Learned</h3>
+            </div>
+        <div className="panel-body">
          <div className="inputComp">
            <Input setPost={this.setPost} getPosts={this.getPosts}/>
          </div>
@@ -85,18 +83,22 @@ export default class Home extends React.Component {
                       
                       return (
                           <div className="row">
-                            <article className="card">
+                            <div className="panel z-depth-2">
                               <li key={idx}>
                                   {/* create a post component <Article article={article} />*/}
                                   {/* <Link to={post.link}><p>{post.title}</p></Link> */}
                                   {/* link to external site */}
-                                  <a href={post.link} target="_blank"><p>{post.title}</p></a>
-                                  <p> {post.body} </p>
-                                  <p> posted by: {post.creator.email} at {post.date} </p>
+                                  <div className="panel-heading">
+                                    <Link to={post.link} target="_blank" className="linkOut">{post.title}</Link>
+                                  </div>
+                                  <div className="panel-body">
+                                    <p> {post.body} </p>
+                                    <p> posted by: {post.creator.email} at {post.date} </p>
+                                    <button onClick={(e) => this.like(e, post)} className="btn-sm btn-primary"><i className="material-icons">thumb_up</i>{post.upVote}</button>
+                                    <button onClick={(e) => this.dislike(e, post)} className="btn-sm btn-danger"><i className="material-icons">thumb_down</i>{post.downVote}</button>
+                                  </div>
                               </li>
-                              <button onClick={(e) => this.like(e, post)} className="btn-sm btn-primary"><i className="material-icons">thumb_up</i>{post.upVote}</button>
-                              <button onClick={(e) => this.dislike(e, post)} className="btn-sm btn-danger"><i className="material-icons">thumb_down</i>{post.downVote}</button>
-                            </article>
+                            </div>
                           </div>
                       )
                     })
@@ -104,8 +106,8 @@ export default class Home extends React.Component {
                 </ul>
          
           </section>
-          </section>
-      </div>
+          </div>
+          </div>
     )
   }
 

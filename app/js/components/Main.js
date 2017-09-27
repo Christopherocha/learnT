@@ -88,22 +88,16 @@ export default class Main extends React.Component{
                 </ul>
             </div>
 	    </nav>
-        <div className="container">
+      <div className="container">
         <div className="jumbotron z-depth-3">
-          <div>
           <h1>LearnT</h1>
           <h2>What did you learn today?</h2>
           <p className="center">There are {this.state.onlineUsers} users online!</p>
-          </div>
         </div>
-
-        <div>
-          
           {/* Displays search component or  saved component */}
           {this.props.children}
-        </div>
-
       </div>
+
       <Widget
           handleNewUserMessage={this.handleNewUserMessage}
           title={"Howdy!"}
