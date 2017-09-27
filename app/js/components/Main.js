@@ -6,6 +6,8 @@ import helper from './utils/helpers';
 
 import auth from '../../../auth/initAuth';
 
+import { Widget, addResponseMessage } from 'react-chat-widget';
+
 export default class Main extends React.Component{
     constructor(props){
       super(props);
@@ -15,6 +17,16 @@ export default class Main extends React.Component{
         },
         onlineUsers: null
       }
+    }
+
+    componentDidMount() {
+      addResponseMessage("Welcome to this awesome chat!");
+    }
+  
+    handleNewUserMessage = (newMessage) => {
+      console.log(`New message incoming! ${newMessage}`);
+      // Now send the message throught the backend API
+      addResponseMessage(response);
     }
 
     componentDidMount() {
@@ -96,6 +108,9 @@ export default class Main extends React.Component{
         </div>
 
       </div>
+      <Widget
+          handleNewUserMessage={this.handleNewUserMessage}
+        />
       </div>
       )
     }
