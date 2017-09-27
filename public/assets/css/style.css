@@ -115,3 +115,17 @@ input {
   .linkOut {
       width: 100% !important;
   }
+
+  .responsive-img {
+      max-height: 350px;      
+  }
+
+
+  @media screen and (max-width: 800px) {
+  .widget-container {
+      max-height: 300px !important;
+      max-width: 250px !important;
+      z-index: -1;
+  }
+
+}
