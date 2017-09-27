@@ -18,10 +18,6 @@ export default class Main extends React.Component{
         onlineUsers: null
       }
     }
-
-    componentDidMount() {
-      addResponseMessage("Welcome to this awesome chat!");
-    }
   
     handleNewUserMessage = (newMessage) => {
       console.log(`New message incoming! ${newMessage}`);
