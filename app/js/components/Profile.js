@@ -54,7 +54,7 @@ export default class Profile extends React.Component {
         }
 
         return (
-            <div className="container">
+            <div>
                 <div className="row">
                     <div className="col m6 s12 center-align">
                         <div className="row profilePic">

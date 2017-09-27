@@ -100,6 +100,7 @@ input {
 /* Establishes profile pic area as relative so the dropzone can fit in */
 .profilePic {
     position: relative;
+    margin: 8px -15px 8px 5px;
 }
 
 .conversation-container > .header {
