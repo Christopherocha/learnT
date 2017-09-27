@@ -95,3 +95,12 @@ h5 {
     min-height: 250px;
     min-height: 250px;
 }
+
+.conversation-container > .header {
+    background-color: black;
+  }
+  
+  .message > .response {
+    background-color: black;
+    color: white;
+  }
