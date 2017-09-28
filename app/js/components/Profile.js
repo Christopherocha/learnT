@@ -2,7 +2,8 @@
 import React from "react";
 import helper from "./utils/helpers";
 import Dropzone from "./DropzoneComponent";
-import {Link} from "react-router";
+import { Link } from "react-router";
+import moment from 'moment';
 
 // Creates and exports the Profile component
 export default class Profile extends React.Component {
@@ -70,43 +71,53 @@ export default class Profile extends React.Component {
                     </div>
                 </div>
                 <div className="panel z-depth-3 content">
-                
-                            <div className="panel-heading center">
-                              <h3 className="panel-title">Things I've Learned</h3>
-                            </div>
+
+                    <div className="panel-heading center">
+                        <h3 className="panel-title">Things I've Learned</h3>
+                    </div>
                     <div className="panel-body">
 
-                    <ul>
-                        {
-                            this.state.posts.map((post, idx) => {
+                        <ul>
+                            {
+                                this.state.posts.map((post, idx) => {
 
-                                return (
-                                    <div className="row">
-                                        <div className="panel z-depth-2">
-                                            <li key={idx}>
-                                                {/* create a post component <Article article={article} />*/}
+                                    return (
+                                        <div className="row">
+                                            <div className="panel z-depth-2">
+                                                <li key={idx}>
+                                                    {/* create a post component <Article article={article} />*/}
 
-                                                {/* <p> {post.title} </p> */}
-                                                {/* link to external site */}
-                                                <Link to={post.link} target="_blank" className="linkOut">
-                                                    <div className="panel-heading panel-primary">
-                                                    TIL: {post.title}
+                                                    {/* <p> {post.title} </p> */}
+                                                    {/* link to external site */}
+                                                    <Link to={post.link} target="_blank" className="linkOut">
+                                                        <div className="panel-heading panel-primary">
+                                                            TIL: {post.title}
+                                                        </div>
+                                                    </Link>
+                                                    <div className="panel-body">
+                                                        <div className="row">
+                                                            <div className="col s10">
+                                                                <p> {post.body} </p>
+                                                            </div>
+                                                            <div className="col s1 right-align">
+                                                                <p><i className="material-icons">thumb_up</i>{post.upVote}</p></div>
+                                                                <div className="col s1 left-align">
+                                                                <p><i className="material-icons">thumb_down</i>{post.downVote}</p>
+                                                            </div>
+                                                        </div>
+                                                        <div className="row right-align">
+                                                            <i>Posted {moment(post.date).format('ll')}</i>
+                                                        </div>
                                                     </div>
-                                                </Link>
-                                                <div className="panel-body">
-                                                    <p> {post.body} </p>
-                                                    <p><i className="material-icons">thumb_up</i>{post.upVote}</p>
-                                                    <p><i className="material-icons">thumb_down</i>{post.downVote}</p>
-                                                </div>
                                                 </li>
-                                           
+
+                                            </div>
                                         </div>
-                                    </div>
-                                )
-                            })
-                        }
-                    </ul>
-                </div>
+                                    )
+                                })
+                            }
+                        </ul>
+                    </div>
                 </div>
             </div >
         )
