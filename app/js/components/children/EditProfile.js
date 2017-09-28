@@ -24,16 +24,20 @@ export default class EditProfile extends React.Component {
         var profile = JSON.parse(localStorage.getItem('profile'));
         console.log(profile);
         var userId = profile.sub.replace("auth0|", "");
-
-        helper.getUser(userId).then(function (response) {
-            console.log(response);
-            console.log('got a user');
-            this.setState({ user: response.data });
-            this.setState({ posts: response.data.posts });
-            var photoUrl = response.data.userPhoto.replace("public", ".");
-            console.log(photoUrl);
-            this.setState({ photoUrl: photoUrl });
-            console.log(this.state.user);
+        
+        helper.getUser(userId).then(function (response, err) {
+            if(err){throw err}
+            else{
+                console.log(response);
+                this.setState({ user: response.data })
+                console.log("the updated user is ", this.state.user);
+                var photoUrl = response.data.userPhoto
+                if (photoUrl != undefined || photoUrl != null) {
+                    photoUrl = photoUrl.replace("public", ".");
+                    this.setState({ photoUrl: photoUrl });
+                }
+                console.log(photoUrl);
+            }
         }.bind(this));
     }
 

@@ -13,7 +13,8 @@ export default class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      posts: []
+      posts: [],
+      user:{}
     }
 
     this.setPost = this.setPost.bind(this);
@@ -26,14 +27,25 @@ export default class Home extends React.Component {
     this.getPosts();
     console.log(this.props)
 
+    if (auth.loggedIn()) {
+
+      var profile = JSON.parse(localStorage.getItem('profile'));
+      var userId = profile.sub.replace("auth0|", "");
+
+      helper.getUser(userId).then(function (response) {
+        console.log(response);
+        console.log('got a user');
+        this.setState({ user: response.data });
+        this.setState({ posts: response.data.posts });
+
+      }.bind(this));
+
+    }
+
   }
   //pass up info from Input component
   setPost(title, body, link) {
     this.setState({ title: title, body: body, link: link })
-  }
-
-  componentDidUpdate() {
-    //this.getPosts();
   }
 
   getPosts() {
@@ -48,23 +60,24 @@ export default class Home extends React.Component {
   like(e, post) {
     e.preventDefault();
     console.log(post);
-    var upVote = parseInt(post.upVote) + 1
-    console.log(upVote);
-    helper.like(post._id, upVote).then(function (response) {
-      console.log("updated the likes ", response);
-      this.getPosts()
-    }.bind(this));
+    console.log(post.upVote.includes(this.state.user._id))
+    if (this.state.user._id && post.upVote.includes(this.state.user._id) == false) {
+      helper.like(post._id, this.state.user._id).then(function (response) {
+        console.log("updated the likes ", response);
+        this.getPosts()
+      }.bind(this));
+    }
   }
 
   dislike(e, post) {
     e.preventDefault();
     console.log(post);
-    var downVote = parseInt(post.downVote) + 1
-    console.log(downVote);
-    helper.dislike(post._id, downVote).then(function (response) {
-      console.log("updated the dislikes ", response);
-      this.getPosts()
-    }.bind(this));
+    if (this.state.user._id && post.downVote.includes(this.state.user._id) == false ) {
+      helper.dislike(post._id, this.state.user._id).then(function (response) {
+        console.log("updated the dislikes ", response);
+        this.getPosts()
+      }.bind(this));
+    }
   }
 
   renderPostForm(){
@@ -124,10 +137,10 @@ export default class Home extends React.Component {
                                 <p> {post.body} </p>
                               </div>
                               <div className="col s1 right-align">
-                                <button onClick={(e) => this.like(e, post)} className="btn-sm btn-primary"><i className="material-icons">thumb_up</i>{post.upVote}</button>
+                                <button onClick={(e) => this.like(e, post)} className="btn-sm btn-primary"><i className="material-icons">thumb_up</i>{post.upVote.length}</button>
                               </div>
                               <div className="col s1 left-align">
-                                <button onClick={(e) => this.dislike(e, post)} className="btn-sm btn-danger"><i className="material-icons">thumb_down</i>{post.downVote}</button>
+                                <button onClick={(e) => this.dislike(e, post)} className="btn-sm btn-danger"><i className="material-icons">thumb_down</i>{post.downVote.length}</button>
                               </div>
                             </div>
                             <div className="row right-align">

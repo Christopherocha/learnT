@@ -96,6 +96,8 @@ router.get("/posts", function(req, res) {
   .sort({ upVote: -1 })
   .populate('creator')
   .populate('followers')
+  .populate('upVote')
+  .populate('downVote')
   .exec( function(err, posts){
     if(err) throw err;
     else{
@@ -207,7 +209,7 @@ router.put('/post/:id', function(req, res, next) {
 
 router.put('/like/:id', function(req, res, next) {
   console.log(req.body)
-  Post.findOneAndUpdate({ _id: req.params.id }, { $set: { upVote: req.body.upVote } }, { new: true },
+  Post.findOneAndUpdate({ _id: req.params.id }, { $push: { upVote: req.body.userid } }, { new: true },
     function (err, doc) {
       if (err) throw err;
       else { res.send(doc) }
@@ -216,7 +218,7 @@ router.put('/like/:id', function(req, res, next) {
 
 router.put('/dislike/:id', function(req, res, next) {
   console.log(req.body)
-  Post.findOneAndUpdate({ _id: req.params.id }, { $set: { downVote: req.body.downVote } }, { new: true },
+  Post.findOneAndUpdate({ _id: req.params.id }, { $push: { downVote: req.body.userid } }, { new: true },
     function (err, doc) {
       if (err) throw err;
       else { res.send(doc) }

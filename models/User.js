@@ -47,7 +47,10 @@ var UserSchema = new Schema ({
         required: false
     },
     posts: [{ type: Schema.Types.ObjectId, ref: 'Post' }],
-    favorites: [{ type: Schema.Types.ObjectId, ref: 'Post' }]
+    comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
+    favorites: [{ type: Schema.Types.ObjectId, ref: 'Post' }],
+    friends: [{type: Schema.Types.ObjectId, ref: 'User' }],
+    pendingFriends: [{type: Schema.Types.ObjectId, ref: 'User' }] 
 });
 
 var User = mongoose.model("User", UserSchema);

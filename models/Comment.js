@@ -3,18 +3,10 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 
-var PostSchema = new Schema ({
-    title: {
-        type: String,
-        required: true
-    },
+var CommentSchema = new Schema ({
     body: {
         type: String,
         required: true
-    },
-    link: {
-        type: String, 
-        required: true,
     },
     date: {
         type: Date,
@@ -26,10 +18,9 @@ var PostSchema = new Schema ({
     creator: {
         type: Schema.Types.ObjectId,
         ref: "User"
-    },
-    followers: [{ type: Schema.Types.ObjectId, ref: "User" }]
+    }
 });
 
-var Post = mongoose.model("Post", PostSchema);
+var Comment = mongoose.model("Comment", CommentSchema);
 
 module.exports = Post;

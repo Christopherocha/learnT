@@ -4,6 +4,8 @@ import helper from "./utils/helpers";
 import Dropzone from "./DropzoneComponent";
 import { Link } from "react-router";
 import moment from 'moment';
+import auth from '../../../auth/initAuth';
+
 
 // Creates and exports the Profile component
 export default class Profile extends React.Component {
@@ -20,16 +22,20 @@ export default class Profile extends React.Component {
 
     componentDidMount() {
 
-        var profile = JSON.parse(localStorage.getItem('profile'));
-        var userId = profile.sub.replace("auth0|", "");
+        if (auth.loggedIn()) {
 
-        helper.getUser(userId).then(function (response) {
-            console.log(response);
-            console.log('got a user');
-            this.setState({ user: response.data });
-            this.setState({ posts: response.data.posts });
+            var profile = JSON.parse(localStorage.getItem('profile'));
+            var userId = profile.sub.replace("auth0|", "");
 
-        }.bind(this));
+            helper.getUser(userId).then(function (response) {
+                console.log(response);
+                console.log('got a user');
+                this.setState({ user: response.data });
+                this.setState({ posts: response.data.posts });
+
+            }.bind(this));
+
+        }
     }
 
     updateUser(user) {
@@ -42,14 +48,8 @@ export default class Profile extends React.Component {
         }.bind(this))
     }
 
-    render() {
-        const style = {
-            visibility: 'hidden',
-            position: 'absolute',
-            top: '0px', left: '0px', height: '0px', width: '0px'
-        }
-
-        return (
+    renderProfile(){
+        return(
             <div>
                 <div className="row">
                     {this.props.children}
@@ -69,10 +69,7 @@ export default class Profile extends React.Component {
                                         <div className="row">
                                             <div className="panel z-depth-2">
                                                 <li key={idx}>
-                                                    {/* create a post component <Article article={article} />*/}
 
-                                                    {/* <p> {post.title} </p> */}
-                                                    {/* link to external site */}
                                                     <Link to={post.link} target="_blank" className="linkOut">
                                                         <div className="panel-heading panel-primary">
                                                             TIL: {post.title}
@@ -84,9 +81,9 @@ export default class Profile extends React.Component {
                                                                 <p> {post.body} </p>
                                                             </div>
                                                             <div className="col s1 right-align">
-                                                                <p><i className="material-icons">thumb_up</i>{post.upVote}</p></div>
-                                                                <div className="col s1 left-align">
-                                                                <p><i className="material-icons">thumb_down</i>{post.downVote}</p>
+                                                                <p><i className="material-icons">thumb_up</i>{post.upVote.length}</p></div>
+                                                            <div className="col s1 left-align">
+                                                                <p><i className="material-icons">thumb_down</i>{post.downVote.length}</p>
                                                             </div>
                                                         </div>
                                                         <div className="row right-align">
@@ -103,6 +100,39 @@ export default class Profile extends React.Component {
                         </ul>
                     </div>
                 </div>
+            </div>
+        )
+    }
+
+    renderTemplate(){
+        return(
+            <div>
+            <div className="row">
+                {this.props.children}
+            </div>
+            <div className="panel z-depth-3 content">
+
+                <div className="panel-heading center">
+                    <h3 className="panel-title">Things I've Learned</h3>
+                </div>
+                <div className="panel-body">
+                    <Link to="/login">Log in to view your account</Link>
+                </div>
+            </div>
+        </div>
+        )
+    }
+
+    render() {
+        const style = {
+            visibility: 'hidden',
+            position: 'absolute',
+            top: '0px', left: '0px', height: '0px', width: '0px'
+        }
+
+        return (
+            <div>
+               { auth.loggedIn() ? this.renderProfile() : this.renderTemplate() }
             </div >
         )
     }

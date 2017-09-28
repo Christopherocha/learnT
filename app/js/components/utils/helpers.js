@@ -44,12 +44,12 @@ var helper = {
     return axios.put("/undoPhotoUpload/"+id, {userPhoto: oldPhoto});    
   },
 
-  like: function(id, upVote){
-    return axios.put("/like/"+id, {upVote: upVote});
+  like: function(id, userid){
+    return axios.put("/like/"+id, {userid: userid});
   },
 
-  dislike: function(id, downVote){
-    return axios.put("/dislike/"+id, {downVote: downVote});
+  dislike: function(id, userid){
+    return axios.put("/dislike/"+id, {userid: userid});
   },
 
 
