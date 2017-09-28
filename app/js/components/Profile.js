@@ -14,6 +14,7 @@ export default class Profile extends React.Component {
         this.state = {
             user: {},
             posts: [],
+            photoUrl: "./assets/images/silhouette.png"
         }
 
     }
@@ -21,6 +22,7 @@ export default class Profile extends React.Component {
     componentDidMount() {
 
         var profile = JSON.parse(localStorage.getItem('profile'));
+        console.log(profile);
         var userId = profile.sub.replace("auth0|", "");
 
         helper.getUser(userId).then(function (response) {
@@ -28,7 +30,10 @@ export default class Profile extends React.Component {
             console.log('got a user');
             this.setState({ user: response.data });
             this.setState({ posts: response.data.posts });
-
+            var photoUrl = response.data.userPhoto.replace("public", ".");
+            console.log(photoUrl);
+            this.setState({ photoUrl: photoUrl });
+            console.log(this.state.user);
         }.bind(this));
     }
 
@@ -52,7 +57,18 @@ export default class Profile extends React.Component {
         return (
             <div>
                 <div className="row">
-                    {this.props.children}
+                    <div className="col m6 s12 center-align">
+                        <div className="row profilePic">
+                            <img className="responsive-img" src={this.state.photoUrl} />
+                            <Dropzone user={this.state.user} id="widget-upload" />
+                        </div>
+
+                    </div>
+                    <div className="col m6 s12">
+                        <div className="card-panel">
+                            {this.props.children}
+                        </div>
+                    </div>
                 </div>
                 <div className="panel z-depth-3 content">
 

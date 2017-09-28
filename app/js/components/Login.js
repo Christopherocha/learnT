@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import auth from '../../../auth/initAuth';
 import helper from "./utils/helpers";
-import { Link } from "react-router";
 
 class Login extends Component {
     constructor(props){
@@ -76,7 +75,7 @@ renderLoginForm = () => {
 renderLogout = () => {
         return(
             <div className="container center">
-                <Link to="/login"><button className="loggedInbtn btn-sm btn-warning center" onClick={ this.logout }>You are logged in! Click to logout!</button></Link>
+                <button className="loggedInbtn btn-sm btn-warning center" onClick={ this.logout }>You are logged in! Click to logout!</button>
             </div>
         )
     }

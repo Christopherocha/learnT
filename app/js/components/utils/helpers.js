@@ -40,10 +40,6 @@ var helper = {
       return axios.put("/user/"+id, {user: user});
   },
 
-  undoPhotoUpload: function(id, oldPhoto){
-    return axios.put("/undoPhotoUpload/"+id, {userPhoto: oldPhoto});    
-  },
-
   like: function(id, upVote){
     return axios.put("/like/"+id, {upVote: upVote});
   },

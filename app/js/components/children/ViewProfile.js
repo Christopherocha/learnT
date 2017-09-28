@@ -13,17 +13,15 @@ export default class viewProfile extends React.Component {
     }
 
     componentDidMount() {    
+        console.log(this.props);
         var profile = JSON.parse(localStorage.getItem('profile'));
         console.log(profile);
         var userId = profile.sub.replace("auth0|", "");
-
         helper.getUser(userId).then(function (response) {
-            console.log(response);
-            var photoUrl = response.data.userPhoto.replace("public", ".");
-            console.log(photoUrl);
-            this.setState({ photoUrl: photoUrl });
-            this.setState({user: response.data})
-            console.log(this.state.user);
+          console.log(response);
+          console.log('got a user');
+          this.setState({user : response.data});
+          console.log(this.state.user);
         }.bind(this));
       }
 
@@ -31,15 +29,7 @@ export default class viewProfile extends React.Component {
     render() {
         return (
             <div>
-                <div className="col m6 s12 center-align">
-                        <div className="row profilePic">
-                            <img className="responsive-img" src={this.state.photoUrl} />
-                        </div>
-
-                    </div>
-                    <div className="col m6 s12">
-                        <div className="card-panel">
-                        <span className="black-text">
+                <span className="black-text">
                     <div className="row valign-wrapper">
                         <div className="col m4 s12"><h5>Name</h5></div>
                         <div className="col m8 s12" id="username">{this.state.user.userName}</div>
@@ -64,9 +54,6 @@ export default class viewProfile extends React.Component {
                         </div>
                     </div>
                 </span>
-                        </div>
-                    </div>
-                
             </div>
         )
     }
