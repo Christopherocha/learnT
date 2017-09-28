@@ -4,6 +4,7 @@ import helper from "./utils/helpers";
 import Input from "./children/Input";
 import { Link } from "react-router";
 import moment from 'moment';
+import auth from '../../../auth/initAuth';
 
 // Creates and exports the Home component
 export default class Home extends React.Component {
@@ -66,6 +67,29 @@ export default class Home extends React.Component {
     }.bind(this));
   }
 
+  renderPostForm(){
+    return(
+      <Input setPost={this.setPost} getPosts={this.getPosts} />
+    )
+  }
+
+  renderWithoutForm(){
+    return(
+      <div className="row">
+      <div className="panel z-depth-2">
+
+          <div className="panel-heading panel-primary">
+              <h3 className="panel-title">What did you learn today?</h3>
+          </div>
+
+          <div className="panel-body">
+              <Link to="/login">Log in to submit your post!</Link>
+          </div>
+      </div>
+  </div>
+    )
+  }
+
   render() {
     return (
       <div className="panel z-depth-3 content">
@@ -75,7 +99,7 @@ export default class Home extends React.Component {
         </div>
         <div className="panel-body">
           <div className="inputComp">
-            <Input setPost={this.setPost} getPosts={this.getPosts} />
+            { auth.loggedIn() ? this.renderPostForm() : this.renderWithoutForm() }
           </div>
           <section className="col m4 s8">
             <ul>

@@ -13,7 +13,6 @@ export default class Main extends React.Component{
       super(props);
       this.state = {
         user : {
-          _id: ""
         },
         onlineUsers: null
       }
