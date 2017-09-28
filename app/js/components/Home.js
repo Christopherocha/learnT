@@ -3,6 +3,7 @@ import React from "react";
 import helper from "./utils/helpers";
 import Input from "./children/Input";
 import {Link} from "react-router";
+import moment from 'moment';
 
 // Creates and exports the Home component
 export default class Home extends React.Component {
@@ -95,7 +96,7 @@ export default class Home extends React.Component {
                                   </Link>
                                   <div className="panel-body">
                                     <p> {post.body} </p>
-                                    <p> posted by: {post.creator.email} at {post.date} </p>
+                                    <p> posted by: {post.creator.email} on {moment(post.date).format('lll')} </p>
                                     <button onClick={(e) => this.like(e, post)} className="btn-sm btn-primary"><i className="material-icons">thumb_up</i>{post.upVote}</button>
                                     <button onClick={(e) => this.dislike(e, post)} className="btn-sm btn-danger"><i className="material-icons">thumb_down</i>{post.downVote}</button>
                                   </div>

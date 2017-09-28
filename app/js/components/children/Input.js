@@ -63,7 +63,7 @@ export default class Input extends React.Component {
                         <form onSubmit={this.handleSubmit}>
                             <div className="form-group">
 
-                                <h5>Title</h5>
+                                <h5>Headline</h5>
                                 <input
                                     value={this.state.title}
                                     type="text"
@@ -83,7 +83,7 @@ export default class Input extends React.Component {
                                     required
                                 />
 
-                                <h5>Link</h5>
+                                <h5>Link your Source!</h5>
                                 <input
                                     value={this.state.link}
                                     type="text"
