@@ -61,6 +61,7 @@ export default class Home extends React.Component {
     e.preventDefault();
     console.log(post);
     console.log(post.upVote.includes(this.state.user._id))
+    console.log(post.upVote.indexOf(this.state.user._id))
     if (this.state.user._id && post.upVote.includes(this.state.user._id) == false) {
       helper.like(post._id, this.state.user._id).then(function (response) {
         console.log("updated the likes ", response);

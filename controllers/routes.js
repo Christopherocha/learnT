@@ -96,8 +96,6 @@ router.get("/posts", function(req, res) {
   .sort({ upVote: -1 })
   .populate('creator')
   .populate('followers')
-  .populate('upVote')
-  .populate('downVote')
   .exec( function(err, posts){
     if(err) throw err;
     else{
