@@ -63,12 +63,12 @@ export default class Profile extends React.Component {
 
                         <ul>
                             {
-                                this.state.posts.map((post, idx) => {
+                                this.state.posts.map((post) => {
 
                                     return (
                                         <div className="row">
                                             <div className="panel z-depth-2">
-                                                <li key={idx}>
+                                                <li key={post._id}>
 
                                                     <Link to={post.link} target="_blank" className="linkOut">
                                                         <div className="panel-heading panel-primary">

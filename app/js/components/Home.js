@@ -118,12 +118,12 @@ export default class Home extends React.Component {
           <section className="col m4 s8">
             <ul>
               {
-                this.state.posts.map((post, idx) => {
+                this.state.posts.map((post) => {
 
                   return (
                     <div className="row">
                       <div className="panel z-depth-2">
-                        <li key={idx}>
+                        <li key={post._id}>
                           {/* create a post component <Article article={article} />*/}
                           {/* <Link to={post.link}><p>{post.title}</p></Link> */}
                           {/* link to external site */}
