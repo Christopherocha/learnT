@@ -7,6 +7,10 @@ var helper = {
     return axios.get("/login", user);
   },
 
+  home: function(){
+    return axios.get("/home", user);
+  },
+
   profile: function(){
     return axios.get("/profile", user);
   },
