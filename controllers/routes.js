@@ -174,6 +174,16 @@ router.put('/uploadHandler/:id', upload.single('file'), function (req, res, next
 
 });
 
+router.put('/undoPhotoUpload/:id', function (req, res, next) { 
+  
+     User.findOneAndUpdate({ "_id": req.params.id }, { $set: { 'userPhoto': req.body.userPhoto} }, { new: true }, 
+     function (err, doc) { 
+       if (err) throw err; 
+       else { res.send(doc) } 
+     }) 
+  
+  
+ }); 
 
 //add favorite to user
 router.put('/user/:id', function(req, res, next) {

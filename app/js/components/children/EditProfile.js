@@ -1,8 +1,10 @@
 import React from 'react';
 import helper from '../utils/helpers';
 import {Link} from "react-router"; 
+import Dropzone from "../DropzoneComponent"; 
 
-export default class Input extends React.Component {
+
+export default class EditProfile extends React.Component {
 
     constructor(props) {
         super(props);
@@ -10,7 +12,8 @@ export default class Input extends React.Component {
             userName: '',
             email: '',
             about: '',
-            location: ''
+            location: '', 
+            user:{} 
         };
         this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
@@ -68,6 +71,13 @@ export default class Input extends React.Component {
     render() {
         return (
             <div>
+                <div className="col m6 s12 center-align"> 
+                    <div className="row profilePic"> 
+                        <Dropzone user={this.state.user} id="widget-upload" /> 
+                    </div> 
+                </div> 
+                <div className="col m6 s12"> 
+                <div className="card-panel"> 
                 <span className="black-text">
                     <div className="row valign-wrapper">
                         <form onSubmit={this.handleSubmit}>
@@ -121,6 +131,8 @@ export default class Input extends React.Component {
                     </div>
 
                 </span>
+                </div>
+                </div>
             </div>
         )
     }
