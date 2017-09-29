@@ -4,6 +4,7 @@ import helper from "./utils/helpers";
 import Input from "./children/Input";
 import { Link } from "react-router";
 import moment from 'moment';
+import auth from '../../../auth/initAuth'; 
 
 // Creates and exports the Home component
 export default class Home extends React.Component {
