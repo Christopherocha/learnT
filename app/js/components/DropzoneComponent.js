@@ -18,9 +18,6 @@ import helper from './utils/helpers';
 export default class Dropzone extends React.Component {
     constructor(props) {
         super(props);
-        this.state={
-            oldPhoto:""
-        }
 
         // For a full list of possible configurations,
         // please consult http://www.dropzonejs.com/#configuration
@@ -45,12 +42,11 @@ export default class Dropzone extends React.Component {
 
         this.success = file => {
             console.log('uploaded', file) 
+            helper.profile();
+        
         };
 
-        this.removedfile = file => {
-            console.log('removing...', file);
-            helper.undoPhotoUpload(this.props.user._id, this.props.user.userPhoto);
-        }
+        this.removedfile = file => console.log('removing...', file);
 
         this.dropzone = null;
     }
