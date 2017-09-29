@@ -1,15 +1,17 @@
 @import url('https://fonts.googleapis.com/css?family=Istok+Web|Teko');
-@import url('https://fonts.googleapis.com/css?family=Patua+One');
+@import url('https://fonts.googleapis.com/css?family=Patrick+Hand|Patrick+Hand+SC');
 
 .launcher,
 nav, 
 .nav-wrapper,
 .panel-heading {
-    background-color: #616161 !important;
+    background-color: #464343 !important;
 }
 /* Post heading color along with input section */
 .panel-primary {
-    background-color: #2B618E !important;
+    background-color: #464343 !important;
+    font-family: 'Patrick Hand', serif;
+    font-size: 24px;
 }
 
 body {
@@ -19,22 +21,25 @@ body {
 
 /* Establishes the cork board look for jumbotron heading */
 .jumbotron {
-    text-align: center;
-    background-color: #F8E680;
-    background-image: url("../images/corkboard.jpg");
+    background-color: #000;
+    background-image: url("../images/chalkboard.jpg");
     background-size: 100%;
-    border: 5px solid #5C2E04;
-    color: #000000;
-    text-shadow: 1px 1px white;
+    border: 5px solid #000;
+    margin: 15px auto;
+}
+
+.headingTop {
+    text-align: center;
+    text-shadow: 1px 1px #000;
     font-weight: 900 !important;
     padding: 0px;
-    margin: 15px auto;
-    font-family: 'Patua One', serif;
+    color: #fff;
+    font-family: 'Patrick Hand', serif;
 }
 
 /* Sets logo font and weight in nav bar */
 .brand-logo {
-    font-family: 'Patua One', serif;
+    font-family: 'Patrick Hand SC', serif;
     font-weight: 750 !important;
     text-shadow: 1px 1px black;
 }
@@ -42,7 +47,7 @@ body {
 /* Establishes link color for navigation on hover */
 a:hover {
     text-decoration: none;
-    color: tan !important;
+    color: lightskyblue !important;
 }
 
 a:link,
@@ -66,7 +71,7 @@ h3 {
 
 h4,
 h5 {
-    font-size: 20px;
+    font-size: 18px;
     margin: 0px !important;
 }
 
@@ -90,6 +95,10 @@ input {
 .panel-title {
     color: #fff;
     font-size: 24px;
+}
+
+p {
+    font-size: 16px !important;
 }
 
 /* Establish button format for when user is logged in */

@@ -54,9 +54,8 @@ export default class Profile extends React.Component {
                 <div className="row">
                     {this.props.children}
                 </div>
-                <div className="panel z-depth-3 content">
 
-                    <div className="panel-heading center">
+                    <div className="headingTop">
                         <h3 className="panel-title">Things I've Learned</h3>
                     </div>
                     <div className="panel-body">
@@ -99,7 +98,7 @@ export default class Profile extends React.Component {
                             }
                         </ul>
                     </div>
-                </div>
+                
             </div>
         )
     }

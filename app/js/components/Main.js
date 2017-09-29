@@ -90,20 +90,23 @@ export default class Main extends React.Component{
 	    </nav>
       <div className="container">
         <div className="jumbotron z-depth-3">
-          <h1>LearnT</h1>
-          <h2>What did you learn today?</h2>
-          <p className="center">There are {this.state.onlineUsers} users online!</p>
-        </div>
+          <div className="headingTop">
+            <h1>LearnT</h1>
+          </div>
           {/* Displays search component or  saved component */}
           {this.props.children}
-      </div>
+
+          <p className="headingTop">There are {this.state.onlineUsers} users online!</p>
+        </div>
+        </div>
 
       <Widget
           handleNewUserMessage={this.handleNewUserMessage}
           title={"Howdy!"}
           subtitle={"Let's chat!"}
         />
-      </div>
+        
+        </div>
       )
     }
 }

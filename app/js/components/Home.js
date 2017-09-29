@@ -106,12 +106,10 @@ export default class Home extends React.Component {
 
   render() {
     return (
-      <div className="panel z-depth-3 content">
-
-        <div className="panel-heading center">
+      <div>
+        <div className="headingTop">
           <h3 className="panel-title">Things We've Learned</h3>
         </div>
-        <div className="panel-body">
           <div className="inputComp">
           { auth.loggedIn() ? this.renderPostForm() : this.renderWithoutForm() } 
           </div>
@@ -157,7 +155,6 @@ export default class Home extends React.Component {
             </ul>
 
           </section>
-        </div>
       </div>
     )
   }
