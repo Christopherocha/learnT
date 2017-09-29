@@ -1,9 +1,8 @@
 import React from 'react';
 import helper from '../utils/helpers';
 import {Link} from "react-router"; 
-import Dropzone from "../DropzoneComponent";
 
-export default class EditProfile extends React.Component {
+export default class Input extends React.Component {
 
     constructor(props) {
         super(props);
@@ -11,8 +10,7 @@ export default class EditProfile extends React.Component {
             userName: '',
             email: '',
             about: '',
-            location: '',
-            user:{}
+            location: ''
         };
         this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
@@ -70,13 +68,6 @@ export default class EditProfile extends React.Component {
     render() {
         return (
             <div>
-            <div className="col m6 s12 center-align">
-                <div className="row profilePic">
-                    <Dropzone user={this.state.user} id="widget-upload" />
-                </div>
-                </div>
-                <div className="col m6 s12">
-                <div className="card-panel">
                 <span className="black-text">
                     <div className="row valign-wrapper">
                         <form onSubmit={this.handleSubmit}>
@@ -124,14 +115,12 @@ export default class EditProfile extends React.Component {
 
                                 <button className="btn-sm btn-success" type="submit">Update</button>
                                 <Link className="modal-trigger" to="/view"><button className="btn-sm btn-primary">
-                                    Done</button></Link>
+                                Done</button></Link>
                             </div>
                         </form>
                     </div>
 
                 </span>
-                </div>
-                </div>
             </div>
         )
     }
