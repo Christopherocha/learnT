@@ -100,11 +100,6 @@ export default class Main extends React.Component{
         </div>
         </div>
 
-      <Widget
-          handleNewUserMessage={this.handleNewUserMessage}
-          title={"Howdy!"}
-          subtitle={"Let's chat!"}
-        />
         
         </div>
       )
